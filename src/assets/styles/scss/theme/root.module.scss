@@ -1,0 +1,3 @@
+@use "root" as *;
+
+@include export-css-variables($root-vars);

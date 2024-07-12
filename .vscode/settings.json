@@ -1,0 +1,27 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+      },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "cSpell.words": [
+        "commitlint",
+        "ICONFONT",
+        "iconify",
+        "nightwatch",
+        "nprogress",
+        "offcanvas",
+        "Parens",
+        "persistedstate",
+        "pinia",
+        "resizability",
+        "ress",
+        "rushstack",
+        "screenreaders",
+        "scrollbars",
+        "tsbuildinfo",
+        "unplugin",
+        "vuetify",
+        "vueuse"
+    ]
+}

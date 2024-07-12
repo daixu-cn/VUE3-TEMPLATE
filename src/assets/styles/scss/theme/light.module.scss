@@ -1,0 +1,3 @@
+@use "light" as *;
+
+@include export-css-variables($light-vars);

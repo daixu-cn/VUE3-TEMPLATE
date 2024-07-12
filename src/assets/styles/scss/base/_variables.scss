@@ -1,0 +1,34 @@
+// css变量前缀
+$prefix: --dx;
+
+// 滚动条颜色
+$scrollbar-color: var(#{$prefix}-scrollbar-color);
+
+// 主色调
+$primary-color: var(#{$prefix}-primary-color);
+// 背景色
+$bg-color: var(#{$prefix}-bg-color);
+// 背景色-覆盖物
+$bg-color-overlay: var(#{$prefix}-bg-color-overlay);
+// 阴影
+$box-shadow: var(#{$prefix}-box-shadow);
+// 边框色
+$border-color: var(#{$prefix}-border-color);
+
+// 字体颜色
+$font-color: var(#{$prefix}-font-color);
+$font-regular-color: var(#{$prefix}-font-regular-color);
+$font-secondary-color: var(#{$prefix}-font-secondary-color);
+$font-placeholder-color: var(#{$prefix}-font-placeholder-color);
+$font-disabled-color: var(#{$prefix}-font-disabled-color);
+// 字体大小
+$font-size: var(#{$prefix}-font-size);
+// 字体
+$font-family: var(#{$prefix}-font-family);
+
+// 间距
+$space: var(#{$prefix}-space);
+// 圆角大小
+$border-radius: var(#{$prefix}-border-radius);
+// 过渡持续时间
+$duration: var(#{$prefix}-duration);

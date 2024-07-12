@@ -1,0 +1,27 @@
+@use "@/assets/styles/scss/base/_variables" as *;
+@use "@/assets/styles/scss/base/_reset" as *;
+@use "@/assets/styles/fonts" as *;
+@use "@/assets/styles/scss/theme" as *;
+@use "@/assets/styles/scss/vendors" as *;
+
+html {
+  box-sizing: border-box;
+  tab-size: 4;
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbar-color;
+
+  body {
+    color: $font-regular-color;
+    background-color: $bg-color;
+    font-family: $font-family;
+    font-size: $font-size;
+
+    transition:
+      color $duration,
+      background-color $duration;
+  }
+}
