@@ -33,6 +33,7 @@
     "": map-get(light.$light-vars, border-color),
   ),
   $bg-color: (
+    "": map-get(light.$light-vars, bg-color),
     "overlay": map-get(light.$light-vars, bg-color-overlay),
   ),
 
