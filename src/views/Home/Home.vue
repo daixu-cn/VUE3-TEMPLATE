@@ -1,17 +1,18 @@
 <template>
-  <div id="Home">
-    <HelloWorld />
-  </div>
+  <div id="Home">Hello World</div>
 </template>
 
 <script setup lang="ts">
-import HelloWorld from "@/components/HelloWorld.vue"
+import {} from "vue"
 </script>
 
 <style lang="scss">
 #Home {
   width: 100vw;
   height: 100vh;
+  font-size: 5vw;
+  font-weight: bold;
+  color: $primary-color;
 
   @include flex-center;
 }
