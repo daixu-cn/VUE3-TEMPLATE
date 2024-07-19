@@ -48,5 +48,8 @@
   ),
   $transition-duration: (
     "": map-get(root.$root-vars, duration),
+  ),
+  $common-component-size: (
+    "default": map-get(root.$root-vars, component-size),
   )
 );
