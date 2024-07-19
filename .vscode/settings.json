@@ -5,7 +5,10 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "cSpell.words": [
+        "cascader",
         "commitlint",
+        "datetime",
+        "datetimerange",
         "ICONFONT",
         "iconify",
         "nightwatch",
