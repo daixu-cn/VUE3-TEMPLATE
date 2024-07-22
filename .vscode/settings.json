@@ -9,6 +9,7 @@
         "commitlint",
         "datetime",
         "datetimerange",
+        "formkit",
         "ICONFONT",
         "iconify",
         "nightwatch",

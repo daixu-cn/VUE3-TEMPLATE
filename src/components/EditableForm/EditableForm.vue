@@ -65,14 +65,14 @@
         </div>
       </template>
 
-      <span class="icon-container" v-if="!disable">
+      <span class="icon-container" v-if="!disable" v-auto-animate>
         <el-icon v-if="isLoading" class="icon is-loading"><Loading /></el-icon>
         <template v-else>
           <el-icon v-if="!isEdit" class="icon" title="编辑" @click="edit"><Edit /></el-icon>
           <template v-else>
             <el-icon class="icon" title="保存" @click="save"><CircleCheck /></el-icon>
-            <el-icon class="icon" title="取消" @click="cancel"><CircleClose /></el-icon
-          ></template>
+            <el-icon class="icon" title="取消" @click="cancel"><CircleClose /></el-icon>
+          </template>
         </template>
       </span>
     </div>
