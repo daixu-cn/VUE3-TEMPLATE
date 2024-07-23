@@ -1,12 +1,11 @@
 import { ObjectDirective } from "vue"
+import type { AutoAnimateOptions, AutoAnimationPlugin } from "@formkit/auto-animate"
 
-declare module "@vue/runtime-core" {
-  export interface ComponentCustomProperties {
-    /**
-     * 用户权限校验
-     *
-     * \<div v-permission:xxx> or \<div v-permission="'xxx'">
-     */
+declare module "vue" {
+  interface ComponentCustomProperties {
+    /** 用户权限校验*/
     vPermission: ObjectDirective<HTMLElement, string>
+    /**自动注入动画*/
+    vAutoAnimate: ObjectDirective<HTMLElement, Partial<AutoAnimateOptions> | AutoAnimationPlugin>
   }
 }
