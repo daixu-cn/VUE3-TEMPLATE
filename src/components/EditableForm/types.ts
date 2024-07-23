@@ -1,4 +1,5 @@
 import type { CSSProperties } from "vue"
+import type { Methods } from "@/server/axios/types"
 import type { BaseModel } from "@/server/models/BaseModel"
 import { ElSelectV2, ElTimePicker } from "element-plus"
 import type {
@@ -25,7 +26,7 @@ export type EditableFormInstance =
 
 export interface Http {
   /**请求方式*/
-  methods?: "get" | "post" | "put" | "patch" | "delete"
+  methods?: Methods
   /**请求地址*/
   url: string
   /**字段属性*/
