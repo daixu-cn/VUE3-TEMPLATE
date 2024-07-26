@@ -65,7 +65,7 @@
         </div>
       </template>
 
-      <span class="icon-container" v-if="!disable" v-auto-animate>
+      <span class="icon-container" v-if="!$props.disabled" v-auto-animate>
         <el-icon v-if="isLoading" class="icon is-loading"><Loading /></el-icon>
         <template v-else>
           <el-icon v-if="!isEdit" class="icon" title="编辑" @click="edit"><Edit /></el-icon>

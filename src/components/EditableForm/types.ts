@@ -47,7 +47,7 @@ export interface EditableFormProps {
   /**是否显示冒号*/
   colon?: boolean
   /**禁用编辑*/
-  disable?: boolean
+  disabled?: boolean
   /**原始传入数据*/
   initial?: any
   /**
