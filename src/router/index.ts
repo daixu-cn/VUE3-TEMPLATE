@@ -4,7 +4,7 @@ import routes from "@/router/routes"
 import useTitle from "@/router/hooks/useTitle"
 import useProgress from "@/router/hooks/useProgress"
 import useUserStore from "@/store/user"
-import { hasPermission } from "@/hooks/permission"
+import { hasPermission } from "@/hooks/usePermission"
 
 const router = createRouter({
   history: createWebHistory(BASE_URL),
