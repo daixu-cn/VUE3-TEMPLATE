@@ -27,7 +27,7 @@
               </span>
             </slot>
 
-            <slot name="remove" :file="file" v-if="$props.onRemove">
+            <slot name="remove" :file="file">
               <el-icon @click.stop="remove(file)" class="delete-icon"><Delete /></el-icon>
             </slot>
           </li>
@@ -62,7 +62,7 @@ const props = withDefaults(defineProps<UploadProps>(), {
 const emit = defineEmits<UploadEmits>()
 const UploadRef = ref<UploadInstance>()
 // 文件列表
-const files = ref<UploadUserFile[]>(props.initial ?? [])
+const files = defineModel<UploadUserFile[]>({ default: [] })
 // 文件上传进度
 const percentage = ref(0)
 // 是否显示滚动条
@@ -75,16 +75,19 @@ function setPercentage(value: number) {
   if (props.onProgress) emit("progress", value)
 }
 function beforeUpload({ type, size }: UploadRawFile) {
-  const mime = type.split("/")[0]
+  const types = props.validate?.types
 
-  if (props.validate?.type && !props.validate.type.includes(mime)) {
-    const message = `仅支持 ${props.validate.type.join("、")} 类型文件!`
+  if (types && !types.includes(type)) {
+    const mimes = types?.map(item => item.split("/").at(-1))
+    const message = `仅支持 ${mimes.join("、")} 类型文件!`
     emit("error", message)
     ElMessage.error(message)
 
     return false
   } else if (props.validate?.size && size > props.validate.size) {
-    const message = `文件大小不能超过 ${(props.validate.size / 1024 / 1024).toFixed(2)} MB!`
+    const sizeToKB = Math.floor((props.validate.size / 1024) * 100) / 100
+    const sizeToMB = Math.floor((props.validate.size / 1024 / 1024) * 100) / 100
+    const message = `文件大小不能超过 ${sizeToMB < 1 ? sizeToKB.toFixed(2) : sizeToMB.toFixed(2)} ${sizeToMB < 1 ? "KB" : "MB"}!`
     emit("error", message)
     ElMessage.error(message)
 
@@ -137,9 +140,9 @@ async function upload({ file }: UploadRequestOptions) {
   }
 }
 function remove(target: UploadUserFile | string | number) {
-  if (isString(target)) return (files.value = files.value.filter(({ name }) => name !== target))
-  if (isNumber(target)) return (files.value = files.value.filter(({ uid }) => uid !== target))
-  if (target.raw) return UploadRef.value?.handleRemove(target.raw)
+  if (isString(target)) files.value = files.value.filter(({ name }) => name !== target)
+  else if (isNumber(target)) files.value = files.value.filter(({ uid }) => uid !== target)
+  else if (target.raw) UploadRef.value?.handleRemove(target.raw)
 
   emit("remove", target)
 }
@@ -153,7 +156,7 @@ function setStatus(status: UploadStatus = "ready") {
   }
 }
 
-defineExpose({ instance: UploadRef, files, upload, remove, setStatus })
+defineExpose({ instance: UploadRef, upload, remove, setStatus })
 </script>
 
 <style lang="scss">

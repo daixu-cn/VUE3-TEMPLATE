@@ -16,8 +16,6 @@ export interface Http {
 export interface UploadProps {
   /**原始 el-upload 属性*/
   upload?: Partial<ElUploadProps>
-  /**原始传入地址*/
-  initial?: UploadUserFile[]
   /**请求配置*/
   http?: Http
   /**是否显示进度条 默认:true*/
@@ -26,11 +24,9 @@ export interface UploadProps {
   validate?: {
     /**文件大小 单位:bytes*/
     size?: number
-    /**文件类型*/
-    type?: string[]
+    /**文件类型 例: ['image/jpeg', 'video/mp4'] */
+    types?: string[]
   }
-  /**移除文件回调*/
-  onRemove?(file: UploadUserFile): void
   /**上传进度回调*/
   onProgress?(percentage: number): void
   /**
@@ -52,6 +48,6 @@ export type UploadEmits = {
   loading: [loading: boolean]
   success: [files: UploadUserFile[]]
   error: [error: unknown]
-  remove: [file: UploadUserFile]
+  remove: [target: UploadUserFile | string | number]
   progress: [percentage: number]
 }
