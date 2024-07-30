@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue"
 import { random } from "lodash-es"
-import { getStyleVariable } from "@/utils/style"
+import { getStyleVariable } from "@/tools/style"
 
 const isCanvasSupported = ref(true)
 
