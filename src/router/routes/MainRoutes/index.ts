@@ -1,7 +1,22 @@
-import HomeRoutes from "@/router/routes/MainRoutes/HomeRoutes"
-
 import type { RouteRecordRaw } from "vue-router"
+import ExampleRoutes from "./ExampleRoutes"
 
-const MainRoutes: Readonly<RouteRecordRaw[]> = [...HomeRoutes]
+const MainRoutes: Readonly<RouteRecordRaw[]> = [
+  {
+    path: "/",
+    name: "Layout",
+    component: () => import("@/views/Main/Layout/Layout.vue"),
+    redirect: "/home",
+    children: [
+      {
+        path: "/home",
+        name: "Home",
+        component: () => import("@/views/Main/Home/Home.vue"),
+        meta: { title: "首页", auth: true },
+      },
+      ...ExampleRoutes,
+    ],
+  },
+]
 
 export default MainRoutes

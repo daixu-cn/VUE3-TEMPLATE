@@ -6,8 +6,26 @@ const HomePermissions: Permission[] = [
   {
     path: "/home",
     label: "首页",
-    icon: <Icon href="icon-logo" />,
+    icon: <Icon href="icon-push" />,
     level: PermissionLevel.MENU,
+  },
+  {
+    path: "/example",
+    label: "全局组件",
+    icon: <Icon href="icon-menu-list" />,
+    level: PermissionLevel.MENU,
+    children: [
+      {
+        path: "/example/form",
+        label: "可编辑表单",
+        level: PermissionLevel.MENU,
+      },
+      {
+        path: "/example/upload",
+        label: "文件上传",
+        level: PermissionLevel.MENU,
+      },
+    ],
   },
 ]
 

@@ -8,8 +8,8 @@ import {} from "vue"
 
 <style lang="scss">
 #Home {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   font-size: 5vw;
   font-weight: bold;
   color: $primary-color;

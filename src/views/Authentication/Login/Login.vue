@@ -31,8 +31,21 @@ const form = reactive({
 })
 
 async function login() {
+  user.setUser({
+    userId: "123456789",
+    avatar: "https://img95.699pic.com/element/40155/1925.png_300.png!/clip/0x300a0a0",
+    qq: false,
+    github: false,
+    google: false,
+    userName: "daixu",
+    email: "daixu.cn@outlook.com",
+    role: 1,
+    emailService: false,
+    createdAt: "2022-01-01 00:00:00",
+    updatedAt: "2022-01-01 00:00:00",
+  })
   user.setToken("EXAMPLE")
-  user.setPermission(["/"])
+  user.setPermission([...router.getRoutes().map(item => item.path), "/example"])
   router.replace("/")
 
   // try {
