@@ -1,5 +1,5 @@
 import app from "@/global/app"
-import { hasPermission } from "@/hooks/usePermission"
+import { hasPermission } from "@/tools/permission"
 
 app.directive<HTMLElement, string>("permission", {
   mounted(el, { arg, value }) {

@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { getKeepAliveNames } from "@/router/hooks/routes"
+import { getKeepAliveNames } from "@/tools/router"
 import type { ViewProps } from "./types"
 
 defineProps<ViewProps>()
