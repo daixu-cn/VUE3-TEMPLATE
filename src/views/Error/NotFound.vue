@@ -20,7 +20,7 @@ onMounted(() => {
   }
 
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
-  const fontFamily = getStyleVariable("--dx-font-family")
+  const fontFamily = getStyleVariable("font-family")
   let X = (canvas.width = window.innerWidth)
   let Y = (canvas.height = window.innerHeight)
   let snowNum = X < 768 ? 25 : 80
