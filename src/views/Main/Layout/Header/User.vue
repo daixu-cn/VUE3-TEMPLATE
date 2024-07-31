@@ -1,12 +1,13 @@
 <template>
   <div id="Layout-Header-User">
     <el-dropdown @command="handleCommand">
-      <span class="username">
+      <span>
         {{ user.info?.userName }}
         <el-icon class="el-icon--right">
           <user-filled />
         </el-icon>
       </span>
+
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item command="info">用户信息</el-dropdown-item>
@@ -33,12 +34,3 @@ const handleCommand = (command: string) => {
   }
 }
 </script>
-
-<style lang="scss">
-#Layout-Header-User {
-  .username {
-    display: inline-flex;
-    outline: none;
-  }
-}
-</style>

@@ -18,7 +18,7 @@ import View from "@/components/View/View.vue"
 
 <style lang="scss">
 #Layout {
-  #{$prefix}-header-height: 40px;
+  #{$prefix}-header-height: 50px;
   #{$prefix}-menu-width: 200px;
 
   display: flex;

@@ -1,5 +1,10 @@
-import type { WritableComputedRef } from "vue"
+export enum Mode {
+  LIGHT,
+  DARK,
+  SYSTEM,
+}
 
 export interface State {
-  dark: WritableComputedRef<boolean>
+  mode: Mode
+  dark: boolean
 }
