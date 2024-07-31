@@ -2,6 +2,12 @@ import type { RouteRecordRaw } from "vue-router"
 
 const ExampleRoutes: Readonly<RouteRecordRaw[]> = [
   {
+    path: "/example/chart",
+    name: "Chart",
+    component: () => import("@/views/Main/Example/Chart.vue"),
+    meta: { title: "图表" },
+  },
+  {
     path: "/example/form",
     name: "EditableForm",
     component: () => import("@/views/Main/Example/EditableForm.vue"),

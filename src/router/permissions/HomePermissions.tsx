@@ -16,6 +16,11 @@ const HomePermissions: Permission[] = [
     level: PermissionLevel.MENU,
     children: [
       {
+        path: "/example/chart",
+        label: "主题/图表",
+        level: PermissionLevel.MENU,
+      },
+      {
         path: "/example/form",
         label: "可编辑表单",
         level: PermissionLevel.MENU,

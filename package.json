@@ -24,15 +24,16 @@
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
-    "@vueuse/core": "^10.11.0",
     "axios": "^1.7.2",
     "dayjs": "^1.11.12",
+    "echarts": "^5.5.1",
     "element-plus": "^2.7.8",
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.2.0",
     "pinia-plugin-persistedstate": "^3.2.1",
     "vue": "^3.4.34",
+    "vue-echarts": "^7.0.0-beta.0",
     "vue-iconify": "^1.0.10",
     "vue-router": "^4.4.0"
   },
