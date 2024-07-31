@@ -37,7 +37,7 @@ const active = ref(route.path)
 
 <style lang="scss">
 #Layout-Menu {
-  width: var(--menu-width);
+  width: var(#{$prefix}-menu-width);
   height: 100%;
   border-right: 1px solid $border-color;
 

@@ -18,17 +18,17 @@ import View from "@/components/View/View.vue"
 
 <style lang="scss">
 #Layout {
-  --header-height: 40px;
-  --menu-width: 200px;
+  #{$prefix}-header-height: 40px;
+  #{$prefix}-menu-width: 200px;
 
   display: flex;
   height: 100vh;
   .Layout-main {
-    flex: 1;
+    width: calc(100% - var(#{$prefix}-menu-width));
     height: 100%;
 
     .Layout-content {
-      height: calc(100% - var(--header-height));
+      height: calc(100% - var(#{$prefix}-header-height));
       padding: $space;
 
       .view-container {

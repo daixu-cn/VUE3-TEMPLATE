@@ -34,5 +34,8 @@
   $bg-color: (
     "": map-get(dark.$dark-vars, bg-color),
     "overlay": map-get(dark.$dark-vars, bg-color-overlay),
+  ),
+  $mask-color: (
+    "": map-get(dark.$dark-vars, mask-color),
   )
 );

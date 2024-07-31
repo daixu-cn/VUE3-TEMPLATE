@@ -18,7 +18,7 @@ import User from "./User.vue"
 
 <style lang="scss">
 #Layout-Header {
-  height: var(--header-height);
+  height: var(#{$prefix}-header-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,7 +26,7 @@ import User from "./User.vue"
   border-bottom: 1px solid $border-color;
 
   .logo {
-    font-size: calc(var(--header-height) - 5px);
+    font-size: calc(var(#{$prefix}-header-height) - 5px);
     color: $primary-color;
   }
 }
