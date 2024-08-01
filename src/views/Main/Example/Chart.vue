@@ -1,12 +1,15 @@
 <template>
   <div id="Example-Chart">
-    <Chart :option="options" />
-    <Chart :option="option2" />
-    <Chart :option="option3" loading />
+    <AutoScaleScreen :wait="0">
+      <Chart :option="options" style="height: 300px" />
+      <Chart :option="option2" style="height: 300px" />
+      <Chart :option="option3" loading style="height: 300px" />
+    </AutoScaleScreen>
   </div>
 </template>
 
 <script setup lang="ts">
+import AutoScaleScreen from "@/components/AutoScaleScreen/AutoScaleScreen.vue"
 import Chart from "@/components/Chart/Chart.vue"
 import type { ECOption } from "@/components/Chart/echarts"
 
@@ -136,9 +139,6 @@ const option3: ECOption = {
 #Example-Chart {
   width: 100%;
   height: 100%;
-  font-size: 5vw;
-  font-weight: bold;
-  color: $primary-color;
 
   #Chart {
     height: 300px;
