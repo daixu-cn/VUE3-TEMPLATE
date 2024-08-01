@@ -5,13 +5,15 @@ import NProgress from "nprogress"
 
 /**
  * @description 获取所有 keep-alive: true 的路由名称
+ * @param {RouteRecordRaw[]} list 路由列表
  * @return {string[]} 路由名称数组
  */
-export function getKeepAliveNames(): string[] {
-  return routes
-    .flat(Infinity)
-    .filter(route => route.meta?.["keep-alive"])
-    .map(route => route.name as string)
+export function getKeepAliveNames(list = routes): string[] {
+  return list.reduce<string[]>((names: string[], { name, meta, children }) => {
+    if (meta?.["keep-alive"]) names.push(name as string)
+    if (children?.length) names.push(...getKeepAliveNames(children))
+    return names
+  }, [])
 }
 
 /**
