@@ -12,6 +12,7 @@ dist
 dist-ssr
 coverage
 *.local
+.pnpm-debug.log*
 
 /cypress/videos/
 /cypress/screenshots/
