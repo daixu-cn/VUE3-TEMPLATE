@@ -40,7 +40,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue"
 import http from "@/server"
-import { isString, isNumber } from "lodash-es"
+import { isString, isNumber } from "radash"
 import { ElMessage } from "element-plus"
 import { Delete } from "@element-plus/icons-vue"
 import useVirtualProgress from "@/hooks/useVirtualProgress"

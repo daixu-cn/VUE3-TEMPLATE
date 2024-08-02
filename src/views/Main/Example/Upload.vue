@@ -49,7 +49,7 @@
 import { ref } from "vue"
 import Upload from "@/components/Upload/Upload.vue"
 import { ElMessage, type UploadUserFile } from "element-plus"
-import { isString, isNumber } from "lodash-es"
+import { isString, isNumber } from "radash"
 
 const files = ref()
 const files2 = ref([

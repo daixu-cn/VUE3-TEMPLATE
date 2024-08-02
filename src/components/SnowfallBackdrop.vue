@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue"
-import { random } from "lodash-es"
+import { random } from "radash"
 
 const isCanvasSupported = ref(true)
 

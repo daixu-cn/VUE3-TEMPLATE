@@ -1,6 +1,6 @@
 <template>
   <div id="Example-Chart">
-    <AutoScaleScreen :wait="0">
+    <AutoScaleScreen :delay="0">
       <Chart :option="options" style="height: 300px" />
       <Chart :option="option2" style="height: 300px" />
       <Chart :option="option3" loading style="height: 300px" />

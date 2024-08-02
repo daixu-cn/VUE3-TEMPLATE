@@ -8,13 +8,13 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from "vue"
-import { debounce } from "lodash-es"
+import { debounce } from "radash"
 import type { AutoScaleScreenProps } from "./types"
 
 const props = withDefaults(defineProps<AutoScaleScreenProps>(), {
   width: 1920,
   height: 1080,
-  wait: 100,
+  delay: 100,
   transformOrigin: "left top",
   fullScreen: false,
 })
@@ -28,7 +28,7 @@ function handleScreenAuto() {
   $el.style.transform = `scale(${scale})`
 }
 
-const resize = debounce(handleScreenAuto, props.wait)
+const resize = debounce({ delay: props.delay }, handleScreenAuto)
 onMounted(handleScreenAuto)
 onMounted(() => addEventListener("resize", resize))
 onUnmounted(() => removeEventListener("resize", resize))

@@ -1,5 +1,4 @@
 import { ref } from "vue"
-import { random } from "lodash-es"
 
 /**
  * @description 虚拟进度
@@ -15,7 +14,7 @@ export default function useVirtualProgress(
 
   const progress = ref(start)
   let timer: NodeJS.Timeout | null = setInterval(() => {
-    const value = progress.value + random(0, 10, true)
+    const value = progress.value + Math.random() * 10
     if (value >= 99) {
       stop()
       return
