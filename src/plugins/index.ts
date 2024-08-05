@@ -1,3 +1,4 @@
+import "@/plugins/locale"
 import "@/plugins/route"
 import "@/plugins/pinia"
 import "@/store"

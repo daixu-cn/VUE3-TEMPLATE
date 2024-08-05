@@ -3,6 +3,7 @@
     <Icon href="icon-logo" class="logo" />
 
     <div class="action-wrapper">
+      <Language />
       <Theme />
       <User />
     </div>
@@ -11,6 +12,7 @@
 
 <script setup lang="ts">
 import { Icon } from "vue-iconify"
+import Language from "./Language.vue"
 import Theme from "./Theme.vue"
 import User from "./User.vue"
 </script>

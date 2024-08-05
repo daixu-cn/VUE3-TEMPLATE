@@ -1,9 +1,13 @@
 <template>
-  <div id="Home">Hello World</div>
+  <div id="Home" @click="handleClick">{{ $t("Hello") }}</div>
 </template>
 
 <script setup lang="ts">
-import {} from "vue"
+import { t } from "@/tools/locale"
+
+function handleClick() {
+  console.log(t("Hello"))
+}
 </script>
 
 <style lang="scss">
