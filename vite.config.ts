@@ -12,12 +12,15 @@ import viteCompression from "vite-plugin-compression"
 import { createHtmlPlugin } from "vite-plugin-html"
 import PostcssPresetEnv from "postcss-preset-env"
 import legacy from "@vitejs/plugin-legacy"
-import { injectScripts } from "./src/config/inject-tags"
+import { injectScripts, injectLinks } from "./src/config/inject-tags"
 
 export default defineConfig(({ mode }) => {
   const PROD = mode === "production"
   const env = loadEnv(mode, process.cwd(), "")
   const scripts = injectScripts([env.VITE_ICON_ICONFONT])
+  const links = injectLinks([
+    { rel: "stylesheet", type: "text/css", href: "/src/assets/styles/css/loading.css" },
+  ])
 
   return {
     base: env.VITE_APP_BASE_URL,
@@ -31,7 +34,7 @@ export default defineConfig(({ mode }) => {
         resolvers: [ElementPlusResolver({ importStyle: "sass" })],
       }),
       AutoImport({ imports: ["vue"], dts: "./src/typings/auto-imports.d.ts" }),
-      createHtmlPlugin({ minify: true, inject: { tags: [...scripts] } }),
+      createHtmlPlugin({ minify: true, inject: { tags: [...scripts, ...links] } }),
       viteCompression({ threshold: 10240 }),
       visualizer({ filename: "statistic.html" }),
       ElementPlus({ useSource: true, defaultLocale: "zh-cn" }),

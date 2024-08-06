@@ -1,0 +1,41 @@
+#app-loading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app-loading .loader {
+  width: 205px;
+  height: 120px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#app-loading .loader path {
+  stroke: cyan;
+  stroke-width: 6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 193.904983521;
+  fill: none;
+  animation:
+    loader-load 4s linear infinite,
+    loader-color 3s linear infinite;
+}
+
+@keyframes loader-load {
+  from {
+    stroke-dashoffset: 775.6199340820312;
+  }
+}
+
+@keyframes loader-color {
+  33% {
+    stroke: yellow;
+  }
+  66% {
+    stroke: magenta;
+  }
+}
