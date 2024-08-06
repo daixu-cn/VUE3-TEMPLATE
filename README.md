@@ -1,4 +1,10 @@
-### 项目指令
+# VUE3-TEMPLATE
+
+English | [简体中文](https://github.com/daixu-cn/VUE3-TEMPLATE/blob/main/README.zh_CN.md)
+
+VUE3 initialization project template: Vue 3、 Vite 5、 TypeScript、 SCSS、 Pinia、 ESLint、 Prettier、 Husky、 Element Plus、 Custom/Dark Theme、 Internationalization、 Legacy Browser Support
+
+## Command
 
 ```shell
 # Install dependencies
