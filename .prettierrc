@@ -12,6 +12,12 @@
       "options": {
         "printWidth": 180
       }
+    },
+    {
+      "files": ".eslintrc",
+      "options": {
+        "parser": "json"
+      }
     }
   ]
 }
