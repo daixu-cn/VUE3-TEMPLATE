@@ -9,3 +9,13 @@ export function injectScripts(scripts: string[]): HtmlTagDescriptor[] {
     }
   })
 }
+
+export function injectLinks(links: Record<string, string | boolean>[]): HtmlTagDescriptor[] {
+  return links.map(attrs => {
+    return {
+      injectTo: "head",
+      tag: "link",
+      attrs,
+    }
+  })
+}
