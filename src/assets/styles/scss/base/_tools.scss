@@ -21,7 +21,7 @@
 @mixin export-css-variables($vars) {
   :export {
     @each $name, $value in $vars {
-      #{$prefix}-#{$name}: #{$value};
+      #{$name}: #{$value};
     }
   }
 }
