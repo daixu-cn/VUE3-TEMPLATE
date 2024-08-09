@@ -1,0 +1,13 @@
+@use "@/assets/styles/scss/base/_variables" as *;
+
+.el-dropdown {
+  outline: none;
+  :focus-visible {
+    outline: none;
+  }
+}
+
+.el-pagination {
+  justify-content: flex-end;
+  margin-top: $space;
+}

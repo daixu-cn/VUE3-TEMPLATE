@@ -41,11 +41,6 @@ import User from "./User.vue"
     }
 
     .el-dropdown {
-      outline: none;
-      :focus-visible {
-        outline: none;
-      }
-
       .el-tooltip__trigger {
         display: inline-flex;
         align-items: center;
