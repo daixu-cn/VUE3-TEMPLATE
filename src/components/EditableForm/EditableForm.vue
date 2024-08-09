@@ -118,6 +118,7 @@ async function save() {
     })
     emit("success", response)
     ElMessage.success("操作成功!")
+    isEdit.value = false
   } catch (err) {
     emit("error", err)
   } finally {

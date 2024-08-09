@@ -13,13 +13,7 @@
     </el-row>
     <el-row>
       <el-col :span="8">
-        <EditableForm
-          label="邮箱服务"
-          type="select"
-          :initial="user.info?.emailService"
-          :select="{ options }"
-          :http="http"
-        />
+        <EditableForm label="邮箱服务" type="select" :select="{ options }" :http="http" />
       </el-col>
       <el-col :span="8">
         <EditableForm
@@ -34,7 +28,11 @@
     <el-row>
       <el-col :span="8">
         <EditableForm disabled label="头像" background="transparent">
-          <el-image style="width: 100px; height: 100px" :src="user.info?.avatar" fit="cover" />
+          <el-image
+            style="width: 100px; height: 100px"
+            src="https://picsum.photos/200"
+            fit="cover"
+          />
         </EditableForm>
       </el-col>
     </el-row>
@@ -56,7 +54,7 @@ const options = [
   },
 ]
 const http = {
-  url: "/update/user",
+  url: "/action.json",
   attr: "attribute",
 }
 </script>
