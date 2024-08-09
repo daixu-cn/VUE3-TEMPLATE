@@ -1,5 +1,6 @@
 import type { RouteRecordRaw } from "vue-router"
 import ExampleRoutes from "./ExampleRoutes"
+import SystemRoutes from "./SystemRoutes"
 
 const MainRoutes: Readonly<RouteRecordRaw[]> = [
   {
@@ -15,6 +16,7 @@ const MainRoutes: Readonly<RouteRecordRaw[]> = [
         meta: { title: "首页", auth: true },
       },
       ...ExampleRoutes,
+      ...SystemRoutes,
     ],
   },
 ]
