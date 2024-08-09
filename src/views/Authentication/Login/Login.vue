@@ -20,8 +20,8 @@ import SnowfallBackdrop from "@/components/SnowfallBackdrop.vue"
 import { Icon } from "vue-iconify"
 import { useRouter } from "vue-router"
 import { user } from "@/store"
-// import http from "@/server"
-// import type { LoginModel } from "@/server/models/Authentication/LoginModel"
+import http from "@/server"
+import type { LoginModel } from "@/server/models/Authentication/LoginModel"
 
 const router = useRouter()
 const loading = ref(false)
@@ -31,35 +31,17 @@ const form = reactive({
 })
 
 async function login() {
-  user.setUser({
-    userId: "123456789",
-    avatar: "https://img95.699pic.com/element/40155/1925.png_300.png!/clip/0x300a0a0",
-    qq: false,
-    github: false,
-    google: false,
-    userName: "daixu",
-    email: "daixu.cn@outlook.com",
-    role: 1,
-    emailService: false,
-    createdAt: "2022-01-01 00:00:00",
-    updatedAt: "2022-01-01 00:00:00",
-  })
-  user.setToken("EXAMPLE")
-  user.setPermission([...router.getRoutes().map(item => item.path), "/example"])
-  router.replace("/")
+  try {
+    loading.value = true
+    const res = await http.post<LoginModel>("/login.json", form)
 
-  // try {
-  //   loading.value = true
-  //   const res = await http.post<LoginModel>("/user/login", {
-  //     email: form.username,
-  //     password: ""
-  //   })
-  //   user.setToken(res.data!.token)
-  //   user.setUser(res.data!.user)
-  //   router.replace("/")
-  // } finally {
-  //   loading.value = false
-  // }
+    user.setToken(res.data!.token)
+    user.setUser(res.data!.user)
+    user.setPermission(res.data!.permissions)
+    router.replace("/")
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 

@@ -13,6 +13,7 @@ export default defineConfig(config => {
     plugins: plugins(config),
     css: css(config),
     build: build(config),
-    server: { open: true, host: "0.0.0.0", port: 8080 },
+    server: { open: true, host: "0.0.0.0", port: Number(env.VITE_APP_PORT) },
+    preview: { host: "0.0.0.0", port: Number(env.VITE_APP_PORT) },
   }
 })
