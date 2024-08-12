@@ -42,13 +42,13 @@
 import { reactive } from "vue"
 import ActionModal from "@/components/ActionModal/ActionModal.vue"
 import permissions from "@/router/permissions"
-import { ElMessage } from "element-plus"
+import { ElMessage, ElTree } from "element-plus"
 import { Share } from "@element-plus/icons-vue"
 import { unique } from "radash"
 import http from "@/server"
 import { assignFields } from "@/tools"
 import type { Permission } from "@/router/types/permission"
-import type { FormInstance, TreeInstance } from "element-plus"
+import type { FormInstance } from "element-plus"
 interface FormField {
   permissionId?: string
   permissionName?: string
@@ -57,7 +57,7 @@ interface FormField {
 
 const emit = defineEmits<{ success: [] }>()
 const FormRef = ref<FormInstance>()
-const TreeRef = ref<TreeInstance>()
+const TreeRef = ref<InstanceType<typeof ElTree>>()
 const show = defineModel<boolean>()
 const loading = ref(false)
 const form = reactive<FormField>({ permissionId: undefined, permissionName: "", permissions: [] })
