@@ -47,20 +47,20 @@ import { Share } from "@element-plus/icons-vue"
 import { unique } from "radash"
 import http from "@/server"
 import { assignFields } from "@/tools"
+import { updatePermission } from "@/server/api/system/permission"
 import type { Permission } from "@/router/types/permission"
 import type { FormInstance } from "element-plus"
-interface FormField {
-  permissionId?: string
-  permissionName?: string
-  permissions?: string[]
-}
 
 const emit = defineEmits<{ success: [] }>()
 const FormRef = ref<FormInstance>()
 const TreeRef = ref<InstanceType<typeof ElTree>>()
 const show = defineModel<boolean>()
 const loading = ref(false)
-const form = reactive<FormField>({ permissionId: undefined, permissionName: "", permissions: [] })
+const form = reactive<Model.Params.PermissionAction>({
+  permissionId: undefined,
+  permissionName: "",
+  permissions: [],
+})
 const rules = reactive({
   permissionName: [{ required: true, message: "请输入权限名称", trigger: "blur" }],
 })
@@ -102,6 +102,7 @@ async function confirm() {
     loading.value = true
 
     await http.post("/action.json", form)
+    await updatePermission(form)
     emit("success")
     ElMessage.success("操作成功")
     show.value = false

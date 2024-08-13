@@ -1,3 +1,4 @@
+import permissions from "@/router/permissions"
 import useUserStore from "@/store/user"
 
 import { PermissionLevel } from "@/router/types/permission"
@@ -48,4 +49,12 @@ export function getMenuPermissions(permissions: Permission[]): Permission[] {
 
     return result
   }, [])
+}
+
+/**
+ * @description 获取当前用户第一个菜单权限
+ * @return {Permission} 返回合法菜单
+ */
+export function getFirstMenu(): Permission {
+  return getMenuPermissions(permissions)?.[0]
 }

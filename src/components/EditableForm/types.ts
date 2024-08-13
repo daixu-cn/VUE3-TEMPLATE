@@ -1,6 +1,5 @@
 import type { CSSProperties } from "vue"
 import type { Methods } from "@/server/axios/types"
-import type { BaseModel } from "@/server/models/BaseModel"
 import { ElSelectV2, ElTimePicker } from "element-plus"
 import type {
   InputProps,
@@ -76,6 +75,6 @@ export interface EditableFormProps {
 
 export type EditableFormEmits = {
   edit: []
-  success: [response: BaseModel]
+  success: [response: Model.Base]
   error: [error: unknown]
 }

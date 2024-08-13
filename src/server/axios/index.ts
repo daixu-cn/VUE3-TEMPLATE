@@ -1,7 +1,6 @@
 import axios, { type AxiosResponse } from "axios"
 import { type AxiosInstance, type AxiosRequestConfig, AxiosError } from "axios"
 import { ElMessage } from "element-plus"
-import type { BaseModel } from "@/server/models/BaseModel"
 import { user } from "@/store"
 
 class HTTP {
@@ -34,7 +33,7 @@ class HTTP {
     )
     // 响应拦截器
     this.instance.interceptors.response.use(
-      (response: AxiosResponse<BaseModel>) => {
+      (response: AxiosResponse<Model.Base>) => {
         const { code, message } = response.data
 
         // 登录过期/Token异常
@@ -94,10 +93,10 @@ class HTTP {
     this.actives.clear()
   }
 
-  request<T>(config: AxiosRequestConfig): Promise<BaseModel<T>> {
+  request<T>(config: AxiosRequestConfig): Promise<Model.Base<T>> {
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await this.instance.request<BaseModel<T>>(config)
+        const response = await this.instance.request<Model.Base<T>>(config)
         resolve(response.data)
       } catch (error) {
         if (error instanceof AxiosError) {

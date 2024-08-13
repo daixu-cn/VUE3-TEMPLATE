@@ -1,5 +1,4 @@
 import type { Methods } from "@/server/axios/types"
-import type { BaseModel } from "@/server/models/BaseModel"
 import type { UploadProps as ElUploadProps, UploadUserFile } from "element-plus"
 
 export interface Http {
@@ -34,7 +33,7 @@ export interface UploadProps {
    * @param {BaseModel} response 接口数据
    * @return {string} 返回图片地址
    */
-  format?<T>(response: BaseModel<T>): T
+  format?<T>(response: Model.Base<T>): T
 }
 
 export interface UploadSlots {

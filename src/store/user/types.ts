@@ -1,7 +1,5 @@
-import type { UserModel } from "@/server/models/User/UserModel"
-
 export interface State {
-  info: UserModel | null
+  info: Model.User | null
   token: string | null
   permission: string[]
 }

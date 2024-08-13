@@ -49,15 +49,13 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue"
 import { useRoute } from "vue-router"
-import http from "@/server"
 import { assign } from "radash"
 import { assignFields } from "@/tools"
 import ActionModal from "./ActionModal.vue"
 import { ElMessage, ElMessageBox } from "element-plus"
 import { Search, Refresh } from "@element-plus/icons-vue"
+import { getPermissionList, deletePermission } from "@/server/api/system/permission"
 import type { FormInstance } from "element-plus"
-import type { BaseListModel } from "@/server/models/BaseModel"
-import type { PermissionModel } from "@/server/models/System/PermissionModel"
 
 const route = useRoute()
 const SearchRef = ref<FormInstance>()
@@ -69,7 +67,7 @@ const table = reactive({
   total: 0,
   page: 1,
   size: 10,
-  list: [] as PermissionModel[],
+  list: [] as Model.Permission[],
 })
 
 function initSearch() {
@@ -83,20 +81,16 @@ function resetSearch() {
 async function getList(page = table.page) {
   table.loading = true
   try {
-    const res = await http.post<BaseListModel<PermissionModel>>("/permission.json", {
-      ...search,
-      page,
-      size: table.size,
-    })
-    table.list = res.data!.list
-    table.total = res.data!.total
+    const res = await getPermissionList({ ...search, page, size: table.size })
+    table.list = res.data.list
+    table.total = res.data.total
   } catch (error) {
     console.log(error)
   } finally {
     table.loading = false
   }
 }
-function handleEdit(permission: PermissionModel) {
+function handleEdit(permission: Model.Permission) {
   ActionModalRef.value?.initial(permission)
   show.value = true
 }
@@ -107,7 +101,7 @@ function handleDelete(permissionId: string) {
       if (action !== "confirm") return done()
       try {
         instance.confirmButtonLoading = true
-        await http.delete(`/action.json`, { permissionId })
+        await deletePermission(permissionId)
         ElMessage.success("操作成功")
         getList(table.page > 1 && table.list.length === 1 ? --table.page : table.page)
       } finally {

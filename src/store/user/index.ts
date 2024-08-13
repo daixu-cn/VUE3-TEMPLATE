@@ -1,6 +1,5 @@
 import { defineStore } from "pinia"
 import type { State } from "./types"
-import type { UserModel } from "@/server/models/User/UserModel"
 
 const useUserStore = defineStore("user", {
   persist: true,
@@ -10,7 +9,7 @@ const useUserStore = defineStore("user", {
     permission: [],
   }),
   actions: {
-    setUser(info: UserModel) {
+    setUser(info: Model.User) {
       this.info = info
       localStorage.setItem("username", info.userName)
     },

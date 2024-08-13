@@ -20,8 +20,9 @@ import SnowfallBackdrop from "@/components/SnowfallBackdrop.vue"
 import { Icon } from "vue-iconify"
 import { useRouter } from "vue-router"
 import { user } from "@/store"
-import http from "@/server"
-import type { LoginModel } from "@/server/models/Auth/LoginModel"
+import { signIn } from "@/server/api/auth"
+import { getFirstMenu } from "@/tools/permission"
+import { ElMessage } from "element-plus"
 
 const router = useRouter()
 const loading = ref(false)
@@ -33,12 +34,15 @@ const form = reactive({
 async function login() {
   try {
     loading.value = true
-    const res = await http.post<LoginModel>("/login.json", form)
+    const res = await signIn(form)
 
-    user.setToken(res.data!.token)
-    user.setUser(res.data!.user)
-    user.setPermission(res.data!.permissions)
-    router.replace("/")
+    user.setToken(res.data.token)
+    user.setUser(res.data.user)
+    user.setPermission(res.data.permissions)
+
+    const { path } = getFirstMenu()
+    if (path) router.replace(path)
+    else ElMessage.error("该账户未设置访问权限")
   } finally {
     loading.value = false
   }

@@ -45,7 +45,6 @@ import { ElMessage } from "element-plus"
 import { Delete } from "@element-plus/icons-vue"
 import useVirtualProgress from "@/hooks/useVirtualProgress"
 import type { UploadSlots, UploadProps, UploadEmits } from "./types"
-import type { BaseModel } from "@/server/models/BaseModel"
 import type {
   UploadStatus,
   UploadRawFile,
@@ -57,7 +56,7 @@ import type {
 defineSlots<UploadSlots>()
 const props = withDefaults(defineProps<UploadProps>(), {
   progress: true,
-  format: (res: BaseModel) => res.data,
+  format: (res: Model.Base) => res.data,
 })
 const emit = defineEmits<UploadEmits>()
 const UploadRef = ref<UploadInstance>()
