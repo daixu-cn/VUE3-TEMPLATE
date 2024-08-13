@@ -57,7 +57,7 @@ import { ElMessage, ElMessageBox } from "element-plus"
 import { Search, Refresh } from "@element-plus/icons-vue"
 import type { FormInstance } from "element-plus"
 import type { BaseListModel } from "@/server/models/BaseModel"
-import type { PermissionModel } from "@/server/models/system/PermissionModel"
+import type { PermissionModel } from "@/server/models/System/PermissionModel"
 
 const route = useRoute()
 const SearchRef = ref<FormInstance>()

@@ -21,7 +21,7 @@ import { Icon } from "vue-iconify"
 import { useRouter } from "vue-router"
 import { user } from "@/store"
 import http from "@/server"
-import type { LoginModel } from "@/server/models/Authentication/LoginModel"
+import type { LoginModel } from "@/server/models/Auth/LoginModel"
 
 const router = useRouter()
 const loading = ref(false)

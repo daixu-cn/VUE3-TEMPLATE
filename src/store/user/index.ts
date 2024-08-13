@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import type { State } from "./types"
-import type { UserModel } from "@/server/models/user/UserModel"
+import type { UserModel } from "@/server/models/User/UserModel"
 
 const useUserStore = defineStore("user", {
   persist: true,

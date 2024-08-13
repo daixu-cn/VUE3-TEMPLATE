@@ -1,4 +1,4 @@
-import type { UserModel } from "@/server/models/user/UserModel"
+import type { UserModel } from "@/server/models/User/UserModel"
 
 export interface LoginModel {
   token: string
