@@ -1,4 +1,4 @@
-#app-loading {
+#app-load-loading {
   position: fixed;
   inset: 0;
   display: flex;
@@ -6,14 +6,14 @@
   align-items: center;
 }
 
-#app-loading .loader {
+#app-load-loading .app-load-icon {
   width: 205px;
   height: 120px;
   display: inline-block;
   vertical-align: middle;
 }
 
-#app-loading .loader path {
+#app-load-loading .app-load-icon path {
   stroke: cyan;
   stroke-width: 6;
   stroke-linejoin: round;
@@ -21,17 +21,17 @@
   stroke-dasharray: 193.904983521;
   fill: none;
   animation:
-    loader-load 4s linear infinite,
-    loader-color 3s linear infinite;
+    app-load-animation 4s linear infinite,
+    app-load-color-animation 3s linear infinite;
 }
 
-@keyframes loader-load {
+@keyframes app-load-animation {
   from {
     stroke-dashoffset: 775.6199340820312;
   }
 }
 
-@keyframes loader-color {
+@keyframes app-load-color-animation {
   33% {
     stroke: yellow;
   }

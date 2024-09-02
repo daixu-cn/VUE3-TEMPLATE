@@ -31,7 +31,11 @@ export default function plugins({ mode }: ConfigEnv): PluginOption[] {
       resolvers: [ElementPlusResolver({ importStyle: "sass" })],
     }),
     AutoImport({ imports: ["vue"], dts: "./src/typings/auto-imports.d.ts" }),
-    createHtmlPlugin({ minify: true, inject: { tags: [...scripts, ...links] } }),
+    createHtmlPlugin({
+      minify: true,
+      entry: "src/main.ts",
+      inject: { tags: [...scripts, ...links] },
+    }),
     viteCompression({ threshold: 10240 }),
     visualizer({ filename: "statistic.html" }),
     ElementPlus({ useSource: true, defaultLocale: "zh-cn" }),
