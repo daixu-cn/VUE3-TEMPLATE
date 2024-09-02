@@ -18,7 +18,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const user = useUserStore()
 
-  if (to.meta.auth && (!user.token || !hasPermission(to.path))) {
+  if (to.meta.auth && (!user.token || !hasPermission(to.meta.permission ?? to.path))) {
     next({ name: "Login" })
   } else {
     next()
