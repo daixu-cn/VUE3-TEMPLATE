@@ -6,23 +6,17 @@ const timer = setInterval(check, 2000)
 async function check() {
   if (!import.meta.env.PROD) return clearInterval(timer)
 
-  const selectors = "script[data-identifier='APP-MAIN-SCRIPT']"
-  const response = await fetch(`/?timestamp=${Date.now()}`)
-  const content = await response.text()
-  const parser = new DOMParser()
-  const remote = parser
-    .parseFromString(content, "text/html")
-    .querySelector<HTMLScriptElement>(selectors)?.src
+  const response = await fetch(`/version.json?timestamp=${Date.now()}`)
+  const { version } = await response.json()
 
-  const latest = document.querySelector<HTMLScriptElement>(selectors)?.src
-
-  if (latest !== remote) notice()
-}
-
-function notice() {
-  clearInterval(timer)
-  alert("检测到有新版本，请刷新页面！")
-  location.reload()
+  if (!localStorage.getItem("version")) {
+    localStorage.setItem("version", version)
+  } else if (localStorage.getItem("version") !== version) {
+    clearInterval(timer)
+    alert("检测到有新版本,请刷新页面!")
+    localStorage.setItem("version", version)
+    location.reload()
+  }
 }
 
 check()
