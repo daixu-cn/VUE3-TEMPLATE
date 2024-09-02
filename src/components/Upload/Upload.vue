@@ -67,7 +67,9 @@ const percentage = ref(0)
 // 是否显示滚动条
 const isProgress = computed(() => props.progress && percentage.value > 0 && percentage.value < 100)
 // 禁用上传
-const disabled = computed(() => Boolean(isProgress.value || files.value.length))
+const disabled = computed(() => Boolean(isProgress.value || files.value?.length))
+// 上传状态
+let status: "loading" | "success" | "error" | "fail"
 
 function setPercentage(value: number) {
   percentage.value = value
@@ -109,6 +111,7 @@ async function upload({ file }: UploadRequestOptions) {
     setPercentage(0)
     emit("loading", true)
 
+    status = "loading"
     const response = await http[methods](url, data, {
       onUploadProgress({ loaded, total }) {
         if (!total) return
@@ -116,7 +119,7 @@ async function upload({ file }: UploadRequestOptions) {
 
         if (percentage.value === 50) {
           const { stop } = useVirtualProgress(percentage.value, value => {
-            if (percentage.value === 100) return stop()
+            if (percentage.value === 100 || status === "error") return stop()
 
             setPercentage(value)
           })
@@ -128,11 +131,14 @@ async function upload({ file }: UploadRequestOptions) {
     const list = Array.isArray(result) ? result : [result]
     files.value = list.map(path => ({ name: path }))
 
+    status = "success"
     setPercentage(100)
     emit("success", files.value)
     ElMessage.success("操作成功!")
   } catch (error) {
+    status = "error"
     setPercentage(0)
+    files.value.pop()
     emit("error", error)
   } finally {
     emit("loading", false)
@@ -160,6 +166,7 @@ defineExpose({ instance: UploadRef, upload, remove, setStatus })
 
 <style lang="scss">
 #Upload {
+  width: 100%;
   .el-upload {
     width: 100%;
     display: flex;
