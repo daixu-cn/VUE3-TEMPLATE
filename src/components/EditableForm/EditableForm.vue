@@ -68,7 +68,10 @@
       <span class="icon-container" v-if="!$props.disabled" v-auto-animate>
         <el-icon v-if="isLoading" class="icon is-loading"><Loading /></el-icon>
         <template v-else>
-          <el-icon v-if="!isEdit" class="icon" title="编辑" @click="edit"><Edit /></el-icon>
+          <template v-if="!isEdit">
+            <el-icon class="icon" title="编辑" @click.stop="edit"><Edit /></el-icon>
+            <slot name="suffix" />
+          </template>
           <template v-else>
             <el-icon class="icon" title="保存" @click="save"><CircleCheck /></el-icon>
             <el-icon class="icon" title="取消" @click="cancel"><CircleClose /></el-icon>
@@ -129,6 +132,11 @@ function cancel() {
   isEdit.value = false
   active.value = props.initial
 }
+
+watch(
+  () => props.initial,
+  value => (active.value = value),
+)
 </script>
 
 <style lang="scss">
