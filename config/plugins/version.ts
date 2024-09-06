@@ -1,12 +1,20 @@
 import fs from "fs"
 import path from "path"
+import { exec } from "child_process"
+import type { Plugin } from "vite"
 
-export default function () {
+export default function (): Plugin {
   return {
     name: "create-version",
-    buildEnd() {
-      const versionPath = path.join(__dirname, "../../public/version.json")
-      fs.writeFile(versionPath, JSON.stringify({ version: new Date() }), "utf8", () => {})
+    buildStart() {
+      exec("git log -1 --pretty=format:'%H %cd' --date=iso-strict", (err, stdout) => {
+        fs.writeFile(
+          path.join(__dirname, "../../public/version.json"),
+          JSON.stringify({ version: stdout.trim() }),
+          "utf8",
+          () => {},
+        )
+      })
     },
   }
 }
