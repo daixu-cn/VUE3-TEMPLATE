@@ -25,7 +25,7 @@
       <el-col :span="20">
         <Upload :http="http" v-model="files2">
           <template #remove="{ file }">
-            <span style="margin-left: 20px; color: red" @click="remove(file)">自定义删除</span>
+            <span style="margin-left: 20rem; color: red" @click="remove(file)">自定义删除</span>
           </template>
         </Upload>
       </el-col>

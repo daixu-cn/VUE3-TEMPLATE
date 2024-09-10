@@ -18,8 +18,8 @@ import View from "@/components/View/View.vue"
 
 <style lang="scss">
 #Layout {
-  #{$prefix}-header-height: 50px;
-  #{$prefix}-menu-width: 200px;
+  #{$prefix}-header-height: 50rem;
+  #{$prefix}-menu-width: 200rem;
 
   display: flex;
   height: 100vh;

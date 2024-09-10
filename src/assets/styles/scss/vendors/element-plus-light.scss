@@ -41,22 +41,30 @@
   ),
 
   $font-size: (
+    "extra-large": map-get(root.$root-vars, font-size) + 6,
+    "large": map-get(root.$root-vars, font-size) + 4,
+    "medium": map-get(root.$root-vars, font-size) + 2,
     "base": map-get(root.$root-vars, font-size),
+    "small": map-get(root.$root-vars, font-size) - 1,
+    "extra-small": map-get(root.$root-vars, font-size) -2,
   ),
   $font-family: (
     "": map-get(root.$root-vars, font-family),
   ),
   $border-radius: (
     "base": map-get(root.$root-vars, border-radius),
+    "small": map-get(root.$root-vars, border-radius) - 2,
   ),
   $transition-duration: (
     "": map-get(root.$root-vars, duration),
   ),
   $common-component-size: (
+    "large": map-get(root.$root-vars, component-size) + 8,
     "default": map-get(root.$root-vars, component-size),
+    "small": map-get(root.$root-vars, component-size) - 8,
   ),
   $loading: (
     "spinner-size": map-get(root.$root-vars, spinner-size),
-    "fullscreen-spinner-size": map-get(root.$root-vars, spinner-size) + 8px,
+    "fullscreen-spinner-size": map-get(root.$root-vars, spinner-size) + 8rem,
   )
 );

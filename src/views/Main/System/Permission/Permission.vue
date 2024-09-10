@@ -1,16 +1,14 @@
 <template>
   <div id="System-Permission">
-    <el-form class="filter-wrapper" ref="SearchRef" :model="search" inline>
+    <el-form class="filter-wrapper" ref="SearchRef" :model="search" inline @submit.prevent>
       <el-form-item class="search-item" label="权限名称" prop="permissionName">
-        <el-input v-model="search.permissionName" placeholder="请输入" />
+        <el-input v-model="search.permissionName" placeholder="请输入" @keyup.enter="getList(1)" />
       </el-form-item>
       <el-form-item class="search-item">
         <el-button type="primary" :icon="Search" :loading="table.loading" @click="getList(1)">
           查询
         </el-button>
-        <el-button :icon="Refresh" :loading="table.loading" plain @click="resetSearch">
-          重置
-        </el-button>
+        <el-button :icon="Refresh" :loading="table.loading" plain @click="reset"> 重置 </el-button>
       </el-form-item>
 
       <el-form-item class="search-item action-wrapper">
@@ -24,12 +22,17 @@
         <el-table-column prop="updatedAt" label="更新时间" align="center" />
         <el-table-column label="操作" align="center">
           <template #default="scope">
-            <el-button link type="warning" size="small" @click="handleEdit(scope.row)"
-              >编辑</el-button
-            >
-            <el-button link type="danger" size="small" @click="handleDelete(scope.row.permissionId)"
-              >删除</el-button
-            >
+            <el-tooltip content="编辑" placement="top" :hide-after="0">
+              <el-button :icon="Edit" circle plain @click="handleEdit(scope.row)" />
+            </el-tooltip>
+            <el-tooltip content="删除" placement="top" :hide-after="0">
+              <el-button
+                :icon="Delete"
+                circle
+                plain
+                @click="handleDelete(scope.row.permissionId)"
+              />
+            </el-tooltip>
           </template>
         </el-table-column>
       </el-table>
@@ -42,25 +45,24 @@
       />
     </div>
 
-    <ActionModal ref="ActionModalRef" v-model="show" @success="getList" />
+    <ActionModal ref="ModalRef" v-model="show" @success="getList" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue"
+import { ref, reactive, useTemplateRef } from "vue"
 import { useRoute } from "vue-router"
 import { assign } from "radash"
 import { assignFields } from "@/tools"
 import ActionModal from "./ActionModal.vue"
 import { ElMessage, ElMessageBox } from "element-plus"
-import { Search, Refresh } from "@element-plus/icons-vue"
+import { Search, Refresh, Edit, Delete } from "@element-plus/icons-vue"
 import { getPermissionList, deletePermission } from "@/server/api/system/permission"
-import type { FormInstance } from "element-plus"
 
+const SearchInstance = useTemplateRef("SearchRef")
+const ModalInstance = useTemplateRef("ModalRef")
 const route = useRoute()
-const SearchRef = ref<FormInstance>()
 const show = ref(false)
-const ActionModalRef = ref<InstanceType<typeof ActionModal>>()
 const search = reactive({ permissionName: "" })
 const table = reactive({
   loading: false,
@@ -70,12 +72,9 @@ const table = reactive({
   list: [] as Model.Permission[],
 })
 
-function initSearch() {
+function reset() {
+  SearchInstance.value?.resetFields()
   assignFields(search, assign(route.params, route.query))
-  getList()
-}
-function resetSearch() {
-  SearchRef.value?.resetFields()
   getList(1)
 }
 async function getList(page = table.page) {
@@ -91,7 +90,7 @@ async function getList(page = table.page) {
   }
 }
 function handleEdit(permission: Model.Permission) {
-  ActionModalRef.value?.initial(permission)
+  ModalInstance.value?.initial(permission)
   show.value = true
 }
 function handleDelete(permissionId: string) {
@@ -111,5 +110,5 @@ function handleDelete(permissionId: string) {
   })
 }
 
-onMounted(initSearch)
+reset()
 </script>

@@ -1,5 +1,9 @@
 // css变量前缀
 $prefix: --dx;
+// 标准设计图宽度
+$design-width: 1920px;
+// 标准设计图高度
+$design-height: 1080px;
 
 // 滚动条颜色
 $scrollbar-color: var(#{$prefix}-scrollbar-color);

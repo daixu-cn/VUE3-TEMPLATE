@@ -91,7 +91,7 @@ import type { EditableFormInstance, EditableFormProps, EditableFormEmits } from 
 
 const props = withDefaults(defineProps<EditableFormProps>(), {
   type: "input",
-  labelWidth: "100px",
+  labelWidth: "100rem",
   format: params => params,
 })
 const emit = defineEmits<EditableFormEmits>()
@@ -163,7 +163,7 @@ watch(
     color: $font-secondary-color;
 
     .custom-container {
-      padding-right: 11px;
+      padding-right: 11rem;
     }
 
     .form-container {
@@ -208,14 +208,14 @@ watch(
 
     .icon-container {
       flex-shrink: 0;
-      padding-right: 5px;
+      padding-right: 5rem;
       @include flex-center;
 
       .icon {
         cursor: pointer;
         color: $primary-color;
         transition: opacity $duration;
-        margin-right: 3px;
+        margin-right: 3rem;
         &:last-child {
           margin-right: 0;
         }

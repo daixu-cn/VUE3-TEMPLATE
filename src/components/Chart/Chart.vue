@@ -16,7 +16,8 @@ import { ref } from "vue"
 import { theme } from "@/store"
 import VChart from "vue-echarts"
 import echarts from "@/components/Chart/echarts"
-import { getStylePrefix, getStyleVariable } from "@/tools/style"
+import { getStyleVariable } from "@/tools/style"
+import root from "@/assets/styles/scss/theme/root.module.scss"
 import type { EChartsInitOpts } from "echarts"
 import type { ChartProps } from "@/components/Chart/types"
 import "@/components/Chart/theme"
@@ -29,8 +30,8 @@ const loadingOptions = {
   text: "",
   spinnerRadius: parseFloat(getStyleVariable("spinner-size")) / 2,
   lineWidth: 2,
-  color: `var(${getStylePrefix()}-primary-color)`,
-  maskColor: `var(${getStylePrefix()}-mask-color)`,
+  color: `var(${root["prefix"]}-primary-color)`,
+  maskColor: `var(${root["prefix"]}-mask-color)`,
 }
 
 defineExpose({ chart, instance: ChartRef })

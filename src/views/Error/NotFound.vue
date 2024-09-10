@@ -42,7 +42,7 @@ onMounted(() => {
   function drawMoon() {
     ctx.save()
     ctx.beginPath()
-    ctx.font = `80px ${fontFamily}`
+    ctx.font = `80rem ${fontFamily}`
     ctx.strokeStyle = "gray"
     ctx.textAlign = "center"
     ctx.strokeText("404", X / 2 + 10, Y / 3 + 30)
@@ -291,7 +291,7 @@ onMounted(() => {
   #Snowflake {
     width: 100vw;
     height: 100vh;
-    letter-spacing: 20px;
+    letter-spacing: 20rem;
     background: #74ebd5;
     background: linear-gradient(to bottom, #acb6e5, #74ebd5);
   }
@@ -300,10 +300,10 @@ onMounted(() => {
     height: 100%;
     @include flex-center;
     color: white;
-    font-size: 30px;
+    font-size: 30rem;
   }
 
-  @media screen and (max-width: 435px) {
+  @media screen and (max-width: 435rem) {
     #text-notFound {
       font-size: 7vw;
     }

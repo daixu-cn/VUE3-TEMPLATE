@@ -1,3 +1,31 @@
+@use "@/assets/styles/scss/base/_variables.scss" as *;
+
+// 生成css变量
+@mixin generate-css-variables($vars, $color-scheme: light) {
+  @if $color-scheme == dark {
+    html.dark {
+      @each $name, $value in $vars {
+        #{$prefix}-#{$name}: #{$value};
+      }
+    }
+  } @else {
+    :root {
+      @each $name, $value in $vars {
+        #{$prefix}-#{$name}: #{$value};
+      }
+    }
+  }
+}
+
+// 导出css变量
+@mixin export-css-variables($vars) {
+  :export {
+    @each $name, $value in $vars {
+      #{$name}: #{$value};
+    }
+  }
+}
+
 //单行超出隐藏
 @mixin text-ellipsis($type: ellipsis) {
   white-space: nowrap;

@@ -168,7 +168,7 @@ onMounted(() => {
   background: linear-gradient(to bottom, rgba(#a6c1ee, 0.7), $color-background);
   position: relative;
   #Snowfall-canvas {
-    letter-spacing: 20px;
+    letter-spacing: 20rem;
     position: absolute;
     inset: 0;
   }

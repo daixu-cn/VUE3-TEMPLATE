@@ -3,7 +3,7 @@
     id="System-Permission-ActionModal"
     v-model="show"
     title="权限管理"
-    width="500px"
+    width="500rem"
     :loading="loading"
     destroy-on-close
     @closed="reset"
@@ -161,7 +161,7 @@ defineExpose({
 
       .check-all {
         transition: color $duration;
-        font-size: 12px;
+        font-size: 12rem;
         cursor: pointer;
 
         &:hover {

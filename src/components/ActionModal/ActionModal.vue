@@ -21,7 +21,7 @@ import type { ActionModalProps, ActionModalEmits } from "./types"
 defineSlots<{ default(): void; header(): void; footer(): void }>()
 defineEmits<ActionModalEmits>()
 withDefaults(defineProps<ActionModalProps>(), {
-  width: "450px",
+  width: "45rem",
   title: "操作弹窗",
   center: true,
   modal: true,
@@ -46,7 +46,7 @@ const show = defineModel<boolean>()
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: calc($font-size + 1px);
+    font-size: calc($font-size + 1rem);
     font-weight: bold;
 
     .el-dialog__headerbtn {

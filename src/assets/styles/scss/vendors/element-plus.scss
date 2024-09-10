@@ -1,13 +1,19 @@
 @use "@/assets/styles/scss/base/_variables" as *;
 
-.el-dropdown {
-  outline: none;
-  :focus-visible {
+html {
+  .el-dropdown {
     outline: none;
+    :focus-visible {
+      outline: none;
+    }
   }
-}
 
-.el-pagination {
-  justify-content: flex-end;
-  margin-top: $space;
+  .el-table {
+    font-size: $font-size;
+  }
+
+  .el-pagination {
+    justify-content: flex-end;
+    margin-top: $space;
+  }
 }

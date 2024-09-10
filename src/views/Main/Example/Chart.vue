@@ -1,9 +1,9 @@
 <template>
   <div id="Example-Chart">
     <AutoScaleScreen :delay="0">
-      <Chart :option="options" style="height: 300px" />
-      <Chart :option="option2" style="height: 300px" />
-      <Chart :option="option3" loading style="height: 300px" />
+      <Chart :option="options" style="height: 300rem" />
+      <Chart :option="option2" style="height: 300rem" />
+      <Chart :option="option3" loading style="height: 300rem" />
     </AutoScaleScreen>
   </div>
 </template>
@@ -141,8 +141,8 @@ const option3: ECOption = {
   height: 100%;
 
   #Chart {
-    height: 300px;
-    padding: 20px;
+    height: 300rem;
+    padding: 20rem;
     box-sizing: border-box;
   }
 }

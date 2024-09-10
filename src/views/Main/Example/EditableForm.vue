@@ -29,7 +29,7 @@
       <el-col :span="8">
         <EditableForm disabled label="头像" background="transparent">
           <el-image
-            style="width: 100px; height: 100px"
+            style="width: 100rem; height: 100rem"
             src="https://picsum.photos/200"
             fit="cover"
           />

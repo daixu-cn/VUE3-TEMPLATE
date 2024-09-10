@@ -1,7 +1,7 @@
 <template>
   <div id="LoginFrame">
     <SnowfallBackdrop>
-      <Icon class="icon-logo" href="icon-logo" size="70px" @click="router.replace('/')" />
+      <Icon class="icon-logo" href="icon-logo" size="70rem" @click="router.replace('/')" />
       <div class="login-container">
         <h1 class="title">登录</h1>
         <div class="form">
@@ -58,7 +58,7 @@ async function login() {
 
   .icon-logo {
     position: absolute;
-    top: calc($space - 10px);
+    top: calc($space - 10rem);
     left: $space;
     color: #fff;
     cursor: pointer;
@@ -69,17 +69,17 @@ async function login() {
   }
 
   .login-container {
-    width: 350px;
+    width: 350rem;
     box-sizing: border-box;
-    padding: 25px 35px;
-    border-radius: 40px;
+    padding: 25rem 35rem;
+    border-radius: 40rem;
     background-color: aliceblue;
-    border: 5px solid #fff;
-    box-shadow: rgba(69, 214, 187, 0.2) 0px 30px 30px -20px;
+    border: 5rem solid #fff;
+    box-shadow: rgba(69, 214, 187, 0.2) 0rem 30rem 30rem -20rem;
 
     .title {
       text-align: center;
-      font-size: 32px;
+      font-size: 32rem;
       color: rgba(69, 214, 187, 0.5);
       font-weight: 700;
       user-select: none;
@@ -89,22 +89,22 @@ async function login() {
     }
 
     .form {
-      margin: 20px 0;
+      margin: 20rem 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       input {
         caret-color: rgba(69, 214, 187, 0.5);
         width: 100%;
-        padding: 15px 20px;
+        padding: 15rem 20rem;
         box-sizing: border-box;
         border: 0;
         outline: none;
-        box-shadow: rgba(69, 214, 187, 0.2) 0px 10px 10px -5px;
-        border-inline: 2px solid transparent;
-        margin-top: 20px;
+        box-shadow: rgba(69, 214, 187, 0.2) 0rem 10rem 10rem -5rem;
+        border-inline: 2rem solid transparent;
+        margin-top: 20rem;
         background-color: #fff;
-        border-radius: 20px;
+        border-radius: 20rem;
         color: $font-secondary-color;
         &:first-child {
           margin-top: 0;
@@ -123,22 +123,22 @@ async function login() {
 
         @keyframes input-animation {
           50% {
-            box-shadow: var(--login-color-primary-5) 0px 23px 10px -20px;
+            box-shadow: var(--login-color-primary-5) 0rem 23rem 10rem -20rem;
           }
         }
       }
     }
     .action {
       width: 100%;
-      margin-bottom: 20px;
-      height: 45px;
-      line-height: 45px;
+      margin-bottom: 20rem;
+      height: 45rem;
+      line-height: 45rem;
       color: #fff;
       user-select: none;
       font-weight: 700;
       text-align: center;
       cursor: pointer;
-      border-radius: 20px;
+      border-radius: 20rem;
       border: 0;
       background: linear-gradient(
         to right,
@@ -147,7 +147,7 @@ async function login() {
         rgba(69, 214, 187, 0.3)
       );
       background-size: 200%;
-      box-shadow: var(--login-color-primary-5) 0px 23px 10px -20px;
+      box-shadow: var(--login-color-primary-5) 0rem 23rem 10rem -20rem;
       animation: action-animation 3s infinite;
 
       &:active {
@@ -160,10 +160,10 @@ async function login() {
       }
     }
   }
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 400rem) {
     .frame {
       width: 90%;
-      padding: 40px 20px;
+      padding: 40rem 20rem;
     }
   }
 }

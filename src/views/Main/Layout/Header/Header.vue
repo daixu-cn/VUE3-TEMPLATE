@@ -27,7 +27,7 @@ import User from "./User.vue"
   border-bottom: 1px solid $border-color;
 
   .logo {
-    font-size: calc(var(#{$prefix}-header-height) - 5px);
+    font-size: calc(var(#{$prefix}-header-height) - 5rem);
     color: $primary-color;
   }
 
@@ -37,7 +37,7 @@ import User from "./User.vue"
 
     .el-icon,
     [class^="DX-Icon_"] {
-      font-size: 20px;
+      font-size: 20rem;
     }
 
     .el-dropdown {
