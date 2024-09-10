@@ -43,7 +43,7 @@ class HTTP {
         }
 
         if (code !== 0) {
-          ElMessage.error({ message, grouping: true })
+          ElMessage.error({ message })
           return Promise.reject(response)
         }
 
@@ -101,7 +101,7 @@ class HTTP {
       } catch (error) {
         if (error instanceof AxiosError) {
           if (error.code !== "ERR_CANCELED") {
-            ElMessage.error({ message: error.message, grouping: true })
+            ElMessage.error({ message: error.message })
           }
         }
         reject(error)
