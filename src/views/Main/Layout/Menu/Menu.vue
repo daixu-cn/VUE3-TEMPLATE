@@ -2,23 +2,7 @@
   <div id="Layout-Menu">
     <el-scrollbar height="100%">
       <el-menu :default-active="active" router>
-        <template v-for="menu of menus" :key="menu.path">
-          <el-sub-menu v-if="menu.children?.length" :index="menu.path">
-            <template #title>
-              <component :is="menu.icon" />
-              <span>{{ menu.label }}</span>
-            </template>
-            <el-menu-item v-for="child of menu.children" :key="child.path" :index="child.path">
-              <component :is="child.icon" />
-              <span>{{ child.label }}</span>
-            </el-menu-item>
-          </el-sub-menu>
-
-          <el-menu-item v-else :index="menu.path">
-            <component :is="menu.icon" />
-            <span>{{ menu.label }}</span>
-          </el-menu-item>
-        </template>
+        <MenuItem :menus="menus" :level="0" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -29,6 +13,7 @@ import { ref } from "vue"
 import { useRoute } from "vue-router"
 import { getMenuPermissions } from "@/tools/permission"
 import permissions from "@/router/permissions"
+import MenuItem from "./MenuItem.vue"
 
 const menus = getMenuPermissions(permissions)
 const route = useRoute()
@@ -48,8 +33,10 @@ const active = ref(route.path)
 
     .el-menu-item,
     .el-sub-menu {
-      [class^="DX-Icon_"] {
+      .icon {
+        width: initial;
         margin-right: $space;
+        font-size: calc($font-size + 4rem);
       }
     }
   }
