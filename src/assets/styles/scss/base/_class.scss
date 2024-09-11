@@ -7,3 +7,35 @@
   padding: $space;
   border-radius: $border-radius;
 }
+
+.default-search-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: $space;
+  column-gap: calc($space * 2);
+  margin-bottom: $space;
+
+  .search-item {
+    margin: 0;
+  }
+
+  .action-wrapper {
+    margin-left: auto;
+  }
+}
+
+.default-table-wrapper {
+  width: 100%;
+
+  .actions {
+    .el-button {
+      border: none;
+      color: $primary-color;
+      background-color: transparent;
+      font-size: calc($font-size + 4rem);
+      &:hover {
+        background-color: $bg-color-component;
+      }
+    }
+  }
+}

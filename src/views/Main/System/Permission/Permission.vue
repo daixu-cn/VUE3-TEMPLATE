@@ -1,6 +1,6 @@
 <template>
   <div id="System-Permission">
-    <el-form class="filter-wrapper" ref="SearchRef" :model="search" inline @submit.prevent>
+    <el-form class="default-search-wrapper" ref="SearchRef" :model="search" inline @submit.prevent>
       <el-form-item class="search-item" label="权限名称" prop="permissionName">
         <el-input v-model="search.permissionName" placeholder="请输入" @keyup.enter="getList(1)" />
       </el-form-item>
@@ -16,22 +16,17 @@
       </el-form-item>
     </el-form>
 
-    <div class="table-wrapper">
+    <div class="default-table-wrapper">
       <el-table :data="table.list" v-loading="table.loading">
         <el-table-column prop="permissionName" label="权限名称" align="center" />
         <el-table-column prop="updatedAt" label="更新时间" align="center" />
-        <el-table-column label="操作" align="center">
+        <el-table-column label="操作" align="center" class-name="actions">
           <template #default="scope">
             <el-tooltip content="编辑" placement="top" :hide-after="0">
-              <el-button :icon="Edit" circle plain @click="handleEdit(scope.row)" />
+              <el-button :icon="Edit" circle @click="handleEdit(scope.row)" />
             </el-tooltip>
             <el-tooltip content="删除" placement="top" :hide-after="0">
-              <el-button
-                :icon="Delete"
-                circle
-                plain
-                @click="handleDelete(scope.row.permissionId)"
-              />
+              <el-button :icon="Delete" circle @click="handleDelete(scope.row.permissionId)" />
             </el-tooltip>
           </template>
         </el-table-column>

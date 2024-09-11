@@ -33,26 +33,6 @@ import View from "@/components/View/View.vue"
 
       .view-container {
         height: 100%;
-
-        .filter-wrapper {
-          display: flex;
-          flex-wrap: wrap;
-          row-gap: $space;
-          column-gap: calc($space * 2);
-          margin-bottom: $space;
-
-          .search-item {
-            margin: 0;
-          }
-
-          .action-wrapper {
-            margin-left: auto;
-          }
-        }
-
-        .table-wrapper {
-          width: 100%;
-        }
       }
     }
   }
