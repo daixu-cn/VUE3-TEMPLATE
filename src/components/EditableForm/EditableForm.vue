@@ -83,7 +83,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue"
+import { ref, useTemplateRef } from "vue"
 import http from "@/server"
 import { ElMessage } from "element-plus"
 import { Edit, CircleCheck, CircleClose, Loading } from "@element-plus/icons-vue"
@@ -96,7 +96,7 @@ const props = withDefaults(defineProps<EditableFormProps>(), {
 })
 const emit = defineEmits<EditableFormEmits>()
 
-const EditableFormRef = ref<EditableFormInstance>()
+const instance = useTemplateRef<EditableFormInstance>("EditableFormRef")
 const active = ref(props.initial)
 const isEdit = ref(false)
 const isLoading = ref(false)
@@ -106,7 +106,7 @@ function edit() {
 
   isEdit.value = true
   // @ts-ignore
-  nextTick(EditableFormRef.value?.togglePopperVisible || EditableFormRef.value?.focus)
+  nextTick(instance.value?.togglePopperVisible || instance.value?.focus)
 }
 async function save() {
   if (!props.http) throw new Error("HTTP parameters are not configured")

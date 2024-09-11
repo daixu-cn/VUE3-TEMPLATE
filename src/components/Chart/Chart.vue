@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { useTemplateRef } from "vue"
 import { theme } from "@/store"
 import VChart from "vue-echarts"
 import echarts from "@/components/Chart/echarts"
@@ -24,7 +24,7 @@ import "@/components/Chart/theme"
 
 defineProps<ChartProps>()
 const chart = ref<echarts.ECharts>()
-const ChartRef = ref<InstanceType<typeof VChart>>()
+const instance = useTemplateRef("ChartRef")
 const initOptions: EChartsInitOpts = { renderer: "svg", locale: "ZH" }
 const loadingOptions = {
   text: "",
@@ -34,7 +34,7 @@ const loadingOptions = {
   maskColor: `var(${root["prefix"]}-mask-color)`,
 }
 
-defineExpose({ chart, instance: ChartRef })
+defineExpose({ chart, instance })
 </script>
 
 <style lang="scss">

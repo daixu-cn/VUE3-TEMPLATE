@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue"
+import { ref, computed, useTemplateRef } from "vue"
 import http from "@/server"
 import { isString, isNumber } from "radash"
 import { ElMessage } from "element-plus"
@@ -46,10 +46,10 @@ import { Delete } from "@element-plus/icons-vue"
 import useVirtualProgress from "@/hooks/useVirtualProgress"
 import type { UploadSlots, UploadProps, UploadEmits } from "./types"
 import type {
+  UploadInstance,
   UploadStatus,
   UploadRawFile,
   UploadUserFile,
-  UploadInstance,
   UploadRequestOptions,
 } from "element-plus"
 
@@ -59,7 +59,7 @@ const props = withDefaults(defineProps<UploadProps>(), {
   format: (res: Model.Base) => res.data,
 })
 const emit = defineEmits<UploadEmits>()
-const UploadRef = ref<UploadInstance>()
+const instance = useTemplateRef<UploadInstance>("UploadRef")
 // 文件列表
 const files = defineModel<UploadUserFile[]>({ default: [] })
 // 文件上传进度
@@ -147,7 +147,7 @@ async function upload({ file }: UploadRequestOptions) {
 function remove(target: UploadUserFile | string | number) {
   if (isString(target)) files.value = files.value.filter(({ name }) => name !== target)
   else if (isNumber(target)) files.value = files.value.filter(({ uid }) => uid !== target)
-  else if (target.raw) UploadRef.value?.handleRemove(target.raw)
+  else if (target.raw) instance.value?.handleRemove(target.raw)
 
   emit("remove", target)
 }
@@ -161,7 +161,7 @@ function setStatus(status: UploadStatus = "ready") {
   }
 }
 
-defineExpose({ instance: UploadRef, upload, remove, setStatus })
+defineExpose({ instance, upload, remove, setStatus })
 </script>
 
 <style lang="scss">

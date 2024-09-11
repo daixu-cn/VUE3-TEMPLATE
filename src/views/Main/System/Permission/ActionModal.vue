@@ -48,22 +48,21 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue"
+import { reactive, useTemplateRef } from "vue"
 import ActionModal from "@/components/ActionModal/ActionModal.vue"
 import _permissions from "@/router/permissions"
-import { ElMessage, ElTree } from "element-plus"
+import { ElMessage, ElTree, type FormInstance as ElFormInstance } from "element-plus"
 import { Share } from "@element-plus/icons-vue"
 import { unique } from "radash"
 import http from "@/server"
 import { assignFields } from "@/tools"
 import { updatePermission } from "@/server/api/system/permission"
 import type { Permission } from "@/router/types/permission"
-import type { FormInstance } from "element-plus"
 
 const emit = defineEmits<{ success: [] }>()
 const permissions = ref(JSON.parse(JSON.stringify(_permissions)))
-const FormRef = ref<FormInstance>()
-const TreeRef = ref<InstanceType<typeof ElTree>>()
+const FormInstance = useTemplateRef<ElFormInstance>("FormRef")
+const TreeInstance = useTemplateRef("TreeRef")
 const show = defineModel<boolean>()
 const loading = ref(false)
 const form = reactive<Model.Params.PermissionAction>({
@@ -104,26 +103,28 @@ function getPermissionPaths(permissions: Permission[]) {
 /** 判断当前权限及后代是否全部选中 */
 function isFullyChecked(permission: Permission) {
   const permissions = getPermissionPaths([permission])
-  const checkedPaths = TreeRef.value!.getCheckedKeys()
+  const checkedPaths = TreeInstance.value!.getCheckedKeys()
   return permissions.every(key => checkedPaths.includes(key))
 }
 /** 反选当前权限及后代 */
 function invertClick(data: Permission) {
   const permissions = getPermissionPaths([data])
-  const checkedPaths = TreeRef.value!.getCheckedKeys()
+  const checkedPaths = TreeInstance.value!.getCheckedKeys()
   const paths = unique([...checkedPaths, ...permissions])
 
   if (isFullyChecked(data)) {
-    TreeRef.value?.setCheckedKeys(checkedPaths.filter(key => !permissions.includes(key as string)))
+    TreeInstance.value?.setCheckedKeys(
+      checkedPaths.filter(key => !permissions.includes(key as string)),
+    )
   } else {
-    TreeRef.value?.setCheckedKeys(paths)
+    TreeInstance.value?.setCheckedKeys(paths)
   }
   handleInvertCheck()
 }
 async function confirm() {
   try {
-    await FormRef.value?.validate()
-    form.permissions = TreeRef.value!.getCheckedKeys() as string[]
+    await FormInstance.value?.validate()
+    form.permissions = TreeInstance.value!.getCheckedKeys() as string[]
     loading.value = true
 
     await http.post("/action.json", form)
@@ -139,7 +140,7 @@ async function confirm() {
 }
 function reset() {
   show.value = false
-  FormRef.value?.resetFields()
+  FormInstance.value?.resetFields()
   Object.keys(form).forEach(key => (form[key] = undefined))
 }
 

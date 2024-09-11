@@ -50,11 +50,11 @@ import { useRoute } from "vue-router"
 import { assign } from "radash"
 import { assignFields } from "@/tools"
 import ActionModal from "./ActionModal.vue"
-import { ElMessage, ElMessageBox } from "element-plus"
+import { ElMessage, ElMessageBox, type FormInstance } from "element-plus"
 import { Search, Refresh, Edit, Delete } from "@element-plus/icons-vue"
 import { getPermissionList, deletePermission } from "@/server/api/system/permission"
 
-const SearchInstance = useTemplateRef("SearchRef")
+const SearchInstance = useTemplateRef<FormInstance>("SearchRef")
 const ModalInstance = useTemplateRef("ModalRef")
 const route = useRoute()
 const show = ref(false)

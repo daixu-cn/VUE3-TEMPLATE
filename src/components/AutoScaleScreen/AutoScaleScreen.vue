@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from "vue"
+import { useTemplateRef, onMounted, onUnmounted } from "vue"
 import { debounce } from "radash"
 import type { AutoScaleScreenProps } from "./types"
 
@@ -18,10 +18,10 @@ const props = withDefaults(defineProps<AutoScaleScreenProps>(), {
   transformOrigin: "left top",
   fullScreen: false,
 })
-const AutoScaleScreenRef = ref<HTMLDivElement>()
+const instance = useTemplateRef("AutoScaleScreenRef")
 
 function handleScreenAuto() {
-  const $el = AutoScaleScreenRef.value!
+  const $el = instance.value!
   const scaleWidth = $el.clientWidth / props.width
   const scaleHeight = $el.clientHeight / props.height
   const scale = Math.min(scaleWidth, scaleHeight)
