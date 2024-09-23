@@ -1,18 +1,18 @@
 @use "@/assets/styles/scss/base/_variables" as *;
 
 html {
-  .el-dropdown {
+  .#{$ns}-dropdown {
     outline: none;
     :focus-visible {
       outline: none;
     }
   }
 
-  .el-table {
+  .#{$ns}-table {
     font-size: $font-size;
   }
 
-  .el-pagination {
+  .#{$ns}-pagination {
     justify-content: flex-end;
     margin-top: $space;
   }

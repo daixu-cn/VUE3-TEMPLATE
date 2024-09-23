@@ -35,13 +35,13 @@ import User from "./User.vue"
     display: flex;
     gap: $space;
 
-    .el-icon,
+    .#{$ns}-icon,
     [class^="DX-Icon_"] {
       font-size: 20rem;
     }
 
-    .el-dropdown {
-      .el-tooltip__trigger {
+    .#{$ns}-dropdown {
+      .#{$ns}-tooltip__trigger {
         display: inline-flex;
         align-items: center;
       }

@@ -48,12 +48,12 @@ withDefaults(defineProps<Partial<ImageProps>>(), {
 </script>
 
 <style lang="scss">
-.el-image {
+.#{$ns}-image {
   width: 100%;
   height: 100%;
   color: $font-secondary-color;
 
-  .el-skeleton {
+  .#{$ns}-skeleton {
     width: 100%;
     height: 100%;
 
@@ -64,7 +64,7 @@ withDefaults(defineProps<Partial<ImageProps>>(), {
       position: relative;
       @include flex-center;
 
-      .el-skeleton__item {
+      .#{$ns}-skeleton__item {
         width: 100%;
         height: 100%;
         position: absolute;

@@ -1,5 +1,7 @@
+// css命名空间
+$ns: dx;
 // css变量前缀
-$prefix: --dx;
+$prefix: --#{$ns};
 // 标准设计图宽度
 $design-width: 1920px;
 // 标准设计图高度

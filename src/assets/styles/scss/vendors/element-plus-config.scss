@@ -1,0 +1,5 @@
+@use "@/assets/styles/scss/base/_variables.scss" as *;
+
+@forward "element-plus/theme-chalk/src/mixins/config.scss" with (
+  $namespace: $ns
+);

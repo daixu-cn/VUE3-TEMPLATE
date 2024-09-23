@@ -151,7 +151,7 @@ defineExpose({
 
 <style lang="scss">
 #System-Permission-ActionModal {
-  .el-tree {
+  .#{$ns}-tree {
     width: 100%;
     .tree-node-container {
       width: 100%;

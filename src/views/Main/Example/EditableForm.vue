@@ -61,7 +61,7 @@ const http = {
 
 <style lang="scss">
 #Example-EditableForm {
-  .el-row {
+  .#{$ns}-row {
     margin-bottom: $space;
   }
 }

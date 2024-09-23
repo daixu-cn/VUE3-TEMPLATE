@@ -26,13 +26,13 @@ const active = ref(route.path)
   height: 100%;
   border-right: 1px solid $border-color;
 
-  .el-menu {
+  .#{$ns}-menu {
     height: 100%;
     border: none;
     background-color: transparent;
 
-    .el-menu-item,
-    .el-sub-menu {
+    .#{$ns}-menu-item,
+    .#{$ns}-sub-menu {
       .icon {
         width: initial;
         margin-right: $space;

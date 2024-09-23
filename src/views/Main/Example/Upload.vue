@@ -72,7 +72,7 @@ function remove(target: UploadUserFile | string | number) {
 
 <style lang="scss">
 #Example-Upload {
-  .el-row {
+  .#{$ns}-row {
     margin-bottom: $space;
   }
 }

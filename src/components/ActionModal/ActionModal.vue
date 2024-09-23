@@ -40,7 +40,7 @@ const show = defineModel<boolean>()
   padding: 0;
   border-radius: $border-radius;
 
-  .el-dialog__header {
+  .#{$ns}-dialog__header {
     padding: $space;
     border-bottom: 1px solid $border-color;
     display: flex;
@@ -49,7 +49,7 @@ const show = defineModel<boolean>()
     font-size: calc($font-size + 1rem);
     font-weight: bold;
 
-    .el-dialog__headerbtn {
+    .#{$ns}-dialog__headerbtn {
       position: static;
       width: initial;
       height: initial;
@@ -57,14 +57,14 @@ const show = defineModel<boolean>()
     }
   }
 
-  .el-dialog__body {
+  .#{$ns}-dialog__body {
     padding: $space;
   }
 
-  .el-dialog__footer {
+  .#{$ns}-dialog__footer {
     padding: 0 $space $space $space;
     display: flex;
-    .el-button {
+    .#{$ns}-button {
       flex: 1;
     }
   }

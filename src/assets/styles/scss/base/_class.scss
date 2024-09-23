@@ -28,7 +28,7 @@
   width: 100%;
 
   .actions {
-    .el-button {
+    .#{$ns}-button {
       border: none;
       color: $primary-color;
       background-color: transparent;

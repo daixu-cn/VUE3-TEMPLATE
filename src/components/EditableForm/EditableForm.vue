@@ -169,37 +169,37 @@ watch(
     .form-container {
       flex-grow: 1;
 
-      .el-input,
-      .el-input__wrapper,
-      .el-textarea__inner,
-      .el-select__wrapper,
-      .el-cascader,
+      .#{$ns}-input,
+      .#{$ns}-input__wrapper,
+      .#{$ns}-textarea__inner,
+      .#{$ns}-select__wrapper,
+      .#{$ns}-cascader,
       [class^="el-input__count"],
       input {
         width: 100%;
         background-color: transparent;
         box-shadow: none;
       }
-      .el-select__selected-item {
+      .#{$ns}-select__selected-item {
         user-select: auto;
       }
-      .el-input__prefix,
-      .el-range__icon,
-      .el-range__close-icon,
-      .is-disabled .el-select__suffix,
-      .is-disabled .el-input__suffix {
+      .#{$ns}-input__prefix,
+      .#{$ns}-range__icon,
+      .#{$ns}-range__close-icon,
+      .is-disabled .#{$ns}-select__suffix,
+      .is-disabled .#{$ns}-input__suffix {
         display: none;
       }
       .is-disabled,
       .is-disabled input,
-      .el-select__caret,
-      .el-input__icon {
+      .#{$ns}-select__caret,
+      .#{$ns}-input__icon {
         cursor: text;
       }
-      .el-input__inner,
-      .el-textarea__inner,
-      .el-range-input,
-      .el-select__placeholder {
+      .#{$ns}-input__inner,
+      .#{$ns}-textarea__inner,
+      .#{$ns}-range-input,
+      .#{$ns}-select__placeholder {
         cursor: text;
         color: inherit;
         -webkit-text-fill-color: initial;

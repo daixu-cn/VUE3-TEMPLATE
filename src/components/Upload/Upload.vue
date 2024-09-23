@@ -167,7 +167,7 @@ defineExpose({ instance, upload, remove, setStatus })
 <style lang="scss">
 #Upload {
   width: 100%;
-  .el-upload {
+  .#{$ns}-upload {
     width: 100%;
     display: flex;
     justify-content: initial;

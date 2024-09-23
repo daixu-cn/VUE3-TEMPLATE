@@ -1,6 +1,7 @@
 @use "@/assets/styles/scss/base/_variables" as *;
 
 $root-vars: (
+  ns: #{$ns},
   prefix: #{$prefix},
   design-width: #{$design-width},
   design-height: #{$design-height},
