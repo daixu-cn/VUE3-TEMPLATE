@@ -55,4 +55,3 @@ echarts.use([
 ])
 
 export default echarts
-echarts.registerTheme
