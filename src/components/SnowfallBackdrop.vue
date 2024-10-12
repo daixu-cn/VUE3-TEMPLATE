@@ -23,8 +23,8 @@ onMounted(() => {
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
   let X = (canvas.width = window.innerWidth)
   let Y = (canvas.height = window.innerHeight)
-  let snowNum = X < 768 ? 25 : 80
-  let backSnowNum = X < 768 ? 25 : 80
+  const snowNum = X < 768 ? 25 : 80
+  const backSnowNum = X < 768 ? 25 : 80
 
   const snows: Snow[] = []
   const backSnows: Snow[] = []

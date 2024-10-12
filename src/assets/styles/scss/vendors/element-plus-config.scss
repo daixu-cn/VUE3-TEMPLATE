@@ -1,5 +1,5 @@
-@use "@/assets/styles/scss/base/_variables.scss" as *;
+@use "@/assets/styles/scss/theme/root" as root;
 
 @forward "element-plus/theme-chalk/src/mixins/config.scss" with (
-  $namespace: $ns
+  $namespace: map-get(root.$root-vars, ns)
 );

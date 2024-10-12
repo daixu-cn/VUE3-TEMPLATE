@@ -23,10 +23,10 @@ onMounted(() => {
   const fontFamily = getStyleVariable("font-family")
   let X = (canvas.width = window.innerWidth)
   let Y = (canvas.height = window.innerHeight)
-  let snowNum = X < 768 ? 25 : 80
-  let backSnowNum = X < 768 ? 25 : 80
-  let treeNum = X < 768 ? 15 : 30
-  let backTreeNum = X < 768 ? 8 : 16
+  const snowNum = X < 768 ? 25 : 80
+  const backSnowNum = X < 768 ? 25 : 80
+  const treeNum = X < 768 ? 15 : 30
+  const backTreeNum = X < 768 ? 8 : 16
   const trees: Tree[] = []
   const backTrees: Tree[] = []
   const radius = 150
