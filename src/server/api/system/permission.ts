@@ -5,17 +5,16 @@ import http from "@/server"
  * @param {object} params 参数
  * @return 返回结果
  */
-export function getPermissionList(params: Model.Params.PermissionList) {
-  return http.post<Model.BaseList<Model.Permission>>("/permission.json", params)
+export function getPermissionList(params: Model.Permission.Params.Search) {
+  return http.post<Model.Base.List<Model.Permission.Data[]>>("/permission.json", params)
 }
 
 /**
  * @description 更新权限
- * @param {string} permissionId 权限ID
  * @param {object} params 参数
  * @return 返回结果
  */
-export function updatePermission(params: Model.Params.PermissionAction) {
+export function updatePermission(params: Model.Permission.Params.Action) {
   return http.post("/action.json", params)
 }
 

@@ -1,7 +1,18 @@
 declare namespace Model {
-  interface Login {
-    token: string
-    user: Model.User
-    permissions: string[]
+  namespace Auth {
+    /** 登录数据 */
+    interface Data {
+      token: string
+      user: Model.User
+      permissions: string[]
+    }
+
+    namespace Params {
+      /** 登录参数 */
+      interface Login {
+        username: string
+        password: string
+      }
+    }
   }
 }

@@ -59,12 +59,12 @@ const ModalInstance = useTemplateRef("ModalRef")
 const route = useRoute()
 const show = ref(false)
 const search = reactive({ permissionName: "" })
-const table = reactive({
+const table = reactive<Model.Base.Table<Model.Permission.Data[]>>({
   loading: false,
   total: 0,
   page: 1,
   size: 10,
-  list: [] as Model.Permission[],
+  list: [],
 })
 
 function reset() {
@@ -84,7 +84,7 @@ async function getList(page = table.page) {
     table.loading = false
   }
 }
-function handleEdit(permission: Model.Permission) {
+function handleEdit(permission: Model.Permission.Data) {
   ModalInstance.value?.initial(permission)
   show.value = true
 }

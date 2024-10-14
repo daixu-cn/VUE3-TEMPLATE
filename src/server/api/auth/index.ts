@@ -5,6 +5,6 @@ import http from "@/server"
  * @param {object} params 参数
  * @return 返回结果
  */
-export function signIn(params: Model.Params.Login) {
-  return http.post<Model.Login>("/login.json", params)
+export function signIn(params: Model.Auth.Params.Login) {
+  return http.post<Model.Auth.Data>("/login.json", params)
 }

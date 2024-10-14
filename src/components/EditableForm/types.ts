@@ -75,6 +75,6 @@ export interface EditableFormProps {
 
 export type EditableFormEmits = {
   edit: []
-  success: [response: Model.Base]
+  success: [response: Model.Base.Response]
   error: [error: unknown]
 }

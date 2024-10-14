@@ -9,7 +9,7 @@ const useUserStore = defineStore("user", {
     permission: [],
   }),
   actions: {
-    setUser(info: Model.User) {
+    setUser(info: Model.User.Data) {
       this.info = info
       localStorage.setItem("username", info.userName)
     },

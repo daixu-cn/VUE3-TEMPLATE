@@ -33,7 +33,7 @@ class HTTP {
     )
     // 响应拦截器
     this.instance.interceptors.response.use(
-      (response: AxiosResponse<Model.Base>) => {
+      (response: AxiosResponse<Model.Base.Response>) => {
         const { code, message } = response.data
 
         // 登录过期/Token异常
@@ -93,10 +93,10 @@ class HTTP {
     this.actives.clear()
   }
 
-  request<T>(config: AxiosRequestConfig): Promise<Model.Base<T>> {
+  request<T>(config: AxiosRequestConfig): Promise<Model.Base.Response<T>> {
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await this.instance.request<Model.Base<T>>(config)
+        const response = await this.instance.request<Model.Base.Response<T>>(config)
         resolve(response.data)
       } catch (error) {
         if (error instanceof AxiosError) {

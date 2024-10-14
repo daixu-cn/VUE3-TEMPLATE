@@ -65,7 +65,7 @@ const FormInstance = useTemplateRef<ElFormInstance>("FormRef")
 const TreeInstance = useTemplateRef("TreeRef")
 const show = defineModel<boolean>()
 const loading = ref(false)
-const form = reactive<Model.Params.PermissionAction>({
+const form = reactive<Model.Permission.Params.Action>({
   permissionId: undefined,
   permissionName: "",
   permissions: [],

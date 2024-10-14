@@ -56,7 +56,7 @@ import type {
 defineSlots<UploadSlots>()
 const props = withDefaults(defineProps<UploadProps>(), {
   progress: true,
-  format: (res: Model.Base) => res.data,
+  format: (res: Model.Base.Response) => res.data,
 })
 const emit = defineEmits<UploadEmits>()
 const instance = useTemplateRef<UploadInstance>("UploadRef")
