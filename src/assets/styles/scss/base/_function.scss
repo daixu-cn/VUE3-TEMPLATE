@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "sass:math";
 
 $z-layer: (
@@ -23,5 +24,5 @@ $z-layer: (
     @return null;
   }
 
-  @return map-get($z-layer, $key);
+  @return map.get($z-layer, $key);
 }
