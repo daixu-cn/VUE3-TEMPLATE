@@ -11,6 +11,7 @@ import { visualizer } from "rollup-plugin-visualizer"
 import viteCompression from "vite-plugin-compression"
 import { createHtmlPlugin } from "vite-plugin-html"
 import legacy from "@vitejs/plugin-legacy"
+import permission from "./permission"
 import version from "./version"
 import { injectScripts, injectLinks } from "../inject-tags"
 
@@ -39,6 +40,7 @@ export default function plugins({ mode }: ConfigEnv): PluginOption[] {
     viteCompression({ threshold: 10240 }),
     visualizer({ filename: "statistic.html" }),
     ElementPlus({ useSource: true, defaultLocale: "zh-cn" }),
+    permission(),
     version(),
   ]
 }

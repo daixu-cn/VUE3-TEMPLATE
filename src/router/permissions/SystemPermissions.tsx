@@ -1,9 +1,8 @@
-import { PermissionLevel } from "@/router/types/permission"
-import type { Permission } from "@/router/types/permission"
+import { PermissionLevel, type Permission } from "@/router/types/permission"
 import { ElIcon } from "element-plus"
 import { Setting } from "@element-plus/icons-vue"
 
-const HomePermissions: Permission[] = [
+const SystemPermissions: Permission[] = [
   {
     path: "/system",
     label: "系统管理",
@@ -40,4 +39,4 @@ const HomePermissions: Permission[] = [
   },
 ]
 
-export default HomePermissions
+export default SystemPermissions

@@ -1,5 +1,4 @@
-import { PermissionLevel } from "@/router/types/permission"
-import type { Permission } from "@/router/types/permission"
+import { PermissionLevel, type Permission } from "@/router/types/permission"
 import { Icon } from "vue-iconify"
 
 const HomePermissions: Permission[] = [

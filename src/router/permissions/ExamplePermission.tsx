@@ -1,8 +1,7 @@
-import { PermissionLevel } from "@/router/types/permission"
-import type { Permission } from "@/router/types/permission"
+import { PermissionLevel, type Permission } from "@/router/types/permission"
 import { Icon } from "vue-iconify"
 
-const HomePermissions: Permission[] = [
+const ExamplePermissions: Permission[] = [
   {
     path: "/example",
     label: "全局组件",
@@ -28,4 +27,4 @@ const HomePermissions: Permission[] = [
   },
 ]
 
-export default HomePermissions
+export default ExamplePermissions
