@@ -32,6 +32,7 @@
             v-if="$props.type === 'select'"
             ref="EditableFormRef"
             placeholder=""
+            automatic-dropdown
             v-bind="$props.select"
             :options="$props.select!.options"
             v-model="active"
