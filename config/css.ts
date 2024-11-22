@@ -1,9 +1,10 @@
 import type { ConfigEnv, CSSOptions } from "vite"
 import PostcssPresetEnv from "postcss-preset-env"
+import cssnano from "cssnano"
 
 export default function css(_config: ConfigEnv): CSSOptions {
   return {
-    postcss: { plugins: [PostcssPresetEnv()] },
+    postcss: { plugins: [PostcssPresetEnv(), cssnano()] },
     preprocessorOptions: {
       scss: {
         api: "modern-compiler",
