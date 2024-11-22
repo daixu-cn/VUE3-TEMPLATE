@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "streetsidesoftware.code-spell-checker",
-    "lokalise.i18n-ally"
+    "lokalise.i18n-ally",
+    "IronGeek.vscode-env"
   ]
 }

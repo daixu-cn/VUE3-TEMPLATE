@@ -17,7 +17,7 @@ import { injectScripts, injectLinks } from "../inject-tags"
 
 export default function plugins({ mode }: ConfigEnv): PluginOption[] {
   const env = loadEnv(mode, process.cwd(), "")
-  const scripts = injectScripts([env.VITE_ICON_ICONFONT])
+  const scripts = injectScripts([env.VITE_APP_ICON_ICONFONT])
   const links = injectLinks([
     { rel: "stylesheet", type: "text/css", href: "/src/assets/styles/css/loading.css" },
   ])

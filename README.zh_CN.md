@@ -2,7 +2,7 @@
 
 [English](https://github.com/daixu-cn/VUE3-TEMPLATE/blob/main/README.md) | 简体中文
 
-VUE3初始化工程模版, 默认配置: Vue 3、Vite 5、TypeScript、SCSS、Pinia、ESLint、Prettier、Husky、Element Plus、自定义/深色主题、国际化、旧版浏览器支持
+VUE3初始化工程模版, 默认配置: Vue、Vite、TypeScript、SCSS、Pinia、ESLint、Prettier、Husky、Element Plus、自定义/深色主题、国际化、旧版浏览器支持
 
 ## 项目指令
 

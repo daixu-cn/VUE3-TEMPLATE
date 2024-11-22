@@ -32,6 +32,7 @@
     "scrollbars",
     "tsbuildinfo",
     "unplugin",
+    "VITE",
     "vuetify",
     "vueuse"
   ],
@@ -40,5 +41,13 @@
   "i18n-ally.sourceLanguage": "en-US",
   "i18n-ally.extract.keygenStyle": "PascalCase",
   "i18n-ally.keystyle": "nested",
-  "i18n-ally.translate.engines": ["deepl", "google", "google-cn", "baidu"]
+  "i18n-ally.translate.engines": ["deepl", "google", "google-cn", "baidu"],
+  "files.associations": {
+    ".env": "env",
+    "*.env.development": "env",
+    "*.env.production": "env"
+  },
+  "[env]": {
+    "editor.defaultFormatter": "IronGeek.vscode-env"
+  }
 }

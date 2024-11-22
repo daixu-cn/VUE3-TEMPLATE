@@ -3,7 +3,9 @@
   "type": "module",
   "author": "daixu <wywangt@outlook.com> (https://daixu.cn/)",
   "packageManager": "pnpm@9.14.2",
-  "engines": { "node": ">=20.11.1" },
+  "engines": {
+    "node": ">=20.11.1"
+  },
   "scripts": {
     "start": "vite",
     "preview": "vite preview",
@@ -17,7 +19,9 @@
     "prepare": "husky"
   },
   "config": {
-    "commitizen": { "path": "@commitlint/cz-commitlint" }
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",

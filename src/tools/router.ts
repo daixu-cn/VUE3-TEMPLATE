@@ -1,5 +1,5 @@
 import type { RouteLocationNormalized } from "vue-router"
-import { TITLE } from "@/global/env"
+import { SITE_TITLE } from "@/global/env"
 import routes from "@/router/routes"
 import NProgress from "nprogress"
 
@@ -35,5 +35,5 @@ export function setProgress(show: boolean = true): void {
  * @return {}
  */
 export function setTitle({ meta: { title } }: RouteLocationNormalized): void {
-  document.title = title ? `${title} | ${TITLE}` : TITLE
+  document.title = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE
 }
