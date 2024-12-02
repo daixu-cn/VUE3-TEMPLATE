@@ -27,9 +27,7 @@ class HTTP {
 
         return config
       },
-      error => {
-        return Promise.reject(error)
-      },
+      error => Promise.reject(error),
     )
     // 响应拦截器
     this.instance.interceptors.response.use(
@@ -93,10 +91,14 @@ class HTTP {
     this.actives.clear()
   }
 
-  request<T>(config: AxiosRequestConfig): Promise<Model.Base.Response<T>> {
+  request<T, D>(config: AxiosRequestConfig): Promise<Model.Base.Response<T>> {
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await this.instance.request<Model.Base.Response<T>>(config)
+        const response = await this.instance.request<
+          Model.Base.Response<T>,
+          AxiosResponse<Model.Base.Response<T>>,
+          D
+        >(config)
         resolve(response.data)
       } catch (error) {
         if (error instanceof AxiosError) {
@@ -109,24 +111,24 @@ class HTTP {
     })
   }
 
-  get<T = any>(url: string, params: any = {}, config: AxiosRequestConfig = {}) {
-    return this.request<T>({ url, params, ...config, method: "GET" })
+  get<T = any, D = any>(url: string, params: D, config: AxiosRequestConfig = {}) {
+    return this.request<T, D>({ url, params, ...config, method: "GET" })
   }
 
-  post<T = any>(url: string, data: any = {}, config: AxiosRequestConfig = {}) {
-    return this.request<T>({ url, data, ...config, method: "POST" })
+  post<T = any, D = any>(url: string, data: D, config: AxiosRequestConfig = {}) {
+    return this.request<T, D>({ url, data, ...config, method: "POST" })
   }
 
-  delete<T = any>(url: string, params: any = {}, config: AxiosRequestConfig = {}) {
-    return this.request<T>({ url, params, ...config, method: "DELETE" })
+  delete<T = any, D = any>(url: string, params: D, config: AxiosRequestConfig = {}) {
+    return this.request<T, D>({ url, params, ...config, method: "DELETE" })
   }
 
-  patch<T = any>(url: string, data: any = {}, config: AxiosRequestConfig = {}) {
-    return this.request<T>({ url, data, ...config, method: "PATCH" })
+  patch<T = any, D = any>(url: string, data: D, config: AxiosRequestConfig = {}) {
+    return this.request<T, D>({ url, data, ...config, method: "PATCH" })
   }
 
-  put<T = any>(url: string, data: any = {}, config: AxiosRequestConfig = {}) {
-    return this.request<T>({ url, data, ...config, method: "PUT" })
+  put<T = any, D = any>(url: string, data: D, config: AxiosRequestConfig = {}) {
+    return this.request<T, D>({ url, data, ...config, method: "PUT" })
   }
 }
 export default HTTP
