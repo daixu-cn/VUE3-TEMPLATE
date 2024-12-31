@@ -7,7 +7,6 @@ export default function css(_config: ConfigEnv): CSSOptions {
     postcss: { plugins: [PostcssPresetEnv(), cssnano()] },
     preprocessorOptions: {
       scss: {
-        api: "modern-compiler",
         additionalData: `
           @use "@/assets/styles/scss/base/_variables.scss" as *;
           @use "@/assets/styles/scss/base/_function.scss" as *;
