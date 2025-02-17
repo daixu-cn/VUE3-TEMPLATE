@@ -4,8 +4,12 @@
     v-model="show"
     title="权限管理"
     width="500rem"
+    top="5vh"
     :loading="loading"
-    destroy-on-close
+    :destroy-on-close="true"
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
+    @opened="opened"
     @closed="reset"
     @confirm="confirm"
     @cancel="() => (show = false)"
@@ -14,16 +18,17 @@
       <el-form-item label="权限名称" prop="permissionName">
         <el-input v-model="form.permissionName" placeholder="请输入权限名称" />
       </el-form-item>
-      <el-form-item label="权限列表">
-        <el-tree
+      <el-form-item label="权限列表" class="permission-item">
+        <el-tree-v2
           ref="TreeRef"
           node-key="path"
+          :height="height"
+          :props="{ value: 'path' }"
           :data="permissions"
           :default-checked-keys="form.permissions"
           show-checkbox
           check-strictly
           @check="() => handleInvertCheck()"
-          @vue:mounted="() => handleInvertCheck()"
         >
           <template #default="{ node, data }">
             <span class="tree-node-container">
@@ -41,30 +46,31 @@
               </span>
             </span>
           </template>
-        </el-tree>
+        </el-tree-v2>
       </el-form-item>
     </el-form>
   </ActionModal>
 </template>
 
 <script setup lang="ts">
-import { reactive, useTemplateRef } from "vue"
 import ActionModal from "@/components/ActionModal/ActionModal.vue"
 import _permissions from "@/router/permissions"
-import { ElMessage, ElTree, type FormInstance as ElFormInstance } from "element-plus"
+import { ElMessage, ElTreeV2, type FormInstance as ElFormInstance } from "element-plus"
 import { Share } from "@element-plus/icons-vue"
 import { unique } from "radash"
 import http from "@/server"
 import { assignFields } from "@/tools"
 import { updatePermission } from "@/server/api/system/permission"
 import type { Permission } from "@/router/types/permission"
+import type { Permissions } from "./types"
 
 const emit = defineEmits<{ success: [] }>()
-const permissions = ref(JSON.parse(JSON.stringify(_permissions)))
+const permissions = ref<Permissions>(JSON.parse(JSON.stringify(_permissions)))
 const FormInstance = useTemplateRef<ElFormInstance>("FormRef")
 const TreeInstance = useTemplateRef("TreeRef")
 const show = defineModel<boolean>()
 const loading = ref(false)
+const height = ref(0)
 const form = reactive<Model.Permission.Params.Action>({
   permissionId: undefined,
   permissionName: "",
@@ -74,6 +80,15 @@ const rules = reactive({
   permissionName: [{ required: true, message: "请输入权限名称", trigger: "blur" }],
 })
 
+function opened() {
+  const $modal = document.querySelector<HTMLDivElement>("#System-Permission-ActionModal")!
+  const marginTop = parseFloat(getComputedStyle($modal).marginTop)
+  $modal.style.setProperty("margin-bottom", `${marginTop}px`)
+  $modal.style.setProperty("height", `${$modal.parentElement!.clientHeight - marginTop * 2}px`)
+  height.value = document.querySelector<HTMLDivElement>(".permission-item")!.clientHeight
+
+  nextTick(() => handleInvertCheck())
+}
 /** 当选中或取消选中时，更新所有权限的 hasFullSelection 属性 */
 function handleInvertCheck(data = permissions.value) {
   for (const permission of data) {
@@ -132,8 +147,6 @@ async function confirm() {
     emit("success")
     ElMessage.success("操作成功")
     show.value = false
-  } catch (error) {
-    console.log(error)
   } finally {
     loading.value = false
   }
@@ -151,6 +164,23 @@ defineExpose({
 
 <style lang="scss">
 #System-Permission-ActionModal {
+  display: flex;
+  flex-direction: column;
+
+  .#{$ns}-dialog__body {
+    height: 100%;
+
+    .#{$ns}-form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .permission-item {
+        height: 100%;
+      }
+    }
+  }
+
   .#{$ns}-tree {
     width: 100%;
     .tree-node-container {
