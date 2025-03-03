@@ -21,10 +21,11 @@
 
 <script setup lang="ts">
 import { Icon } from "vue-iconify"
-import { locale } from "@/store"
+import useStore from "@/store"
 import locales from "@/locale"
 import type { Language } from "@/locale/types"
 
+const { locale } = useStore()
 locale.setLanguage(locale.language)
 const handleCommand = (language: Language) => locale.setLanguage(language)
 </script>

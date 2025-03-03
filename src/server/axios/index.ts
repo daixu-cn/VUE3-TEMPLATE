@@ -1,7 +1,7 @@
 import axios, { type AxiosResponse } from "axios"
 import { type AxiosInstance, type AxiosRequestConfig, AxiosError } from "axios"
 import { ElMessage } from "element-plus"
-import { user } from "@/store"
+import useStore from "@/store"
 
 class HTTP {
   // axios实例
@@ -37,7 +37,7 @@ class HTTP {
         // 登录过期/Token异常
         if (code === 401 || code === 403) {
           this.cancelAll()
-          user.reset()
+          useStore().user.reset()
         }
 
         if (code !== 0) {

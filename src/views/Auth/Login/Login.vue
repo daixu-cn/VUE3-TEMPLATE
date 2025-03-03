@@ -19,12 +19,13 @@ import { ref, reactive } from "vue"
 import SnowfallBackdrop from "@/components/SnowfallBackdrop.vue"
 import { Icon } from "vue-iconify"
 import { useRouter } from "vue-router"
-import { user } from "@/store"
+import useStore from "@/store"
 import { signIn } from "@/server/api/auth"
 import { getFirstMenu } from "@/tools/permission"
 import { ElMessage } from "element-plus"
 
 const router = useRouter()
+const { user } = useStore()
 const loading = ref(false)
 const form = reactive({
   username: localStorage.getItem("username") ?? "",

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router"
 import { BASE_URL } from "@/global/env"
 import routes from "@/router/routes"
-import useUserStore from "@/store/user"
+import useStore from "@/store"
 import { setTitle, setProgress } from "@/tools/router"
 import { hasPermission } from "@/tools/permission"
 
@@ -16,9 +16,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const user = useUserStore()
-
-  if (to.meta.auth && (!user.token || !hasPermission(to.meta.permission ?? to.path))) {
+  if (to.meta.auth && (!useStore().user.token || !hasPermission(to.meta.permission ?? to.path))) {
     next({ name: "Login" })
   } else {
     next()

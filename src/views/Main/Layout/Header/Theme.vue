@@ -23,9 +23,10 @@
 <script setup lang="ts">
 import { Icon } from "vue-iconify"
 import { Sunny, Moon, Setting } from "@element-plus/icons-vue"
-import { theme } from "@/store"
+import useStore from "@/store"
 import { Mode } from "@/store/theme/types"
 
+const { theme } = useStore()
 const menus = [
   {
     label: "亮色模式",

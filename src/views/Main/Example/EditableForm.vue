@@ -41,8 +41,9 @@
 
 <script setup lang="ts">
 import EditableForm from "@/components/EditableForm/EditableForm.vue"
-import { user } from "@/store"
+import useStore from "@/store"
 
+const { user } = useStore()
 const options = [
   {
     label: "开启",

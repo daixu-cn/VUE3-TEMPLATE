@@ -1,5 +1,5 @@
 import permissions from "@/router/permissions"
-import useUserStore from "@/store/user"
+import useStore from "@/store"
 
 import { PermissionLevel } from "@/router/types/permission"
 import type { Permission } from "@/router/types/permission"
@@ -10,9 +10,7 @@ import type { Permission } from "@/router/types/permission"
  * @return {boolean} true:拥有权限 false:没有权限
  */
 export function hasPermission(permission: string): boolean {
-  const user = useUserStore()
-
-  return user.permission.includes(permission)
+  return useStore().user.permission.includes(permission)
 }
 
 /**

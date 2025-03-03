@@ -21,9 +21,10 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router"
 import { UserFilled } from "@element-plus/icons-vue"
-import { user } from "@/store"
+import useStore from "@/store"
 
 const router = useRouter()
+const { user } = useStore()
 
 const handleCommand = (command: string) => {
   if (command === "info") {

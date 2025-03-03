@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { useTemplateRef } from "vue"
-import { theme } from "@/store"
+import useStore from "@/store"
 import VChart from "vue-echarts"
 import echarts from "@/components/Chart/echarts"
 import { getStyleVariable } from "@/tools/style"
@@ -23,6 +23,7 @@ import type { ChartProps } from "@/components/Chart/types"
 import "@/components/Chart/theme"
 
 defineProps<ChartProps>()
+const { theme } = useStore()
 const chart = ref<echarts.ECharts>()
 const instance = useTemplateRef("ChartRef")
 const initOptions: EChartsInitOpts = { renderer: "svg", locale: "ZH" }
