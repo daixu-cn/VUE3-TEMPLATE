@@ -1,8 +1,8 @@
-import app from "@/global/app"
 import { createI18n } from "vue-i18n"
 import { messages } from "@/locale"
+import type { App } from "vue"
 
-const i18n = createI18n({
+export const i18n = createI18n({
   locale: "en-US",
   fallbackLocale: "en-US",
   legacy: false,
@@ -10,5 +10,6 @@ const i18n = createI18n({
   messages,
 })
 
-app.use(i18n)
-export default i18n
+export function setupI18n(app: App<Element>) {
+  app.use(i18n)
+}

@@ -26,6 +26,5 @@ import locales from "@/locale"
 import type { Language } from "@/locale/types"
 
 const { locale } = useStore()
-locale.setLanguage(locale.language)
 const handleCommand = (language: Language) => locale.setLanguage(language)
 </script>

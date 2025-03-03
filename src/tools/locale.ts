@@ -1,4 +1,4 @@
-import i18n from "@/plugins/locale"
+import { i18n } from "@/plugins/locale"
 import type { Keys } from "@/locale/types"
 
 export function t(key: Keys, options: Record<string, unknown> = {}) {
