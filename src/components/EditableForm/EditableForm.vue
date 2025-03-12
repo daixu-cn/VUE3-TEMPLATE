@@ -16,7 +16,7 @@
           <el-input
             v-if="$props.type === 'input'"
             ref="EditableFormRef"
-            autosize
+            :autosize="{ minRows: 1 }"
             v-bind="$props.input"
             v-model="active"
             :disabled="isLoading || !isEdit"
@@ -204,6 +204,10 @@ watch(
         cursor: text;
         color: inherit;
         -webkit-text-fill-color: initial;
+      }
+
+      .#{$ns}-textarea__inner {
+        min-height: $component-size !important;
       }
     }
 
