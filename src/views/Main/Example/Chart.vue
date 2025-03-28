@@ -1,9 +1,9 @@
 <template>
   <div id="Example-Chart">
-    <AutoScaleScreen :delay="0">
-      <Chart :option="options" style="height: 300rem" />
-      <Chart :option="option2" style="height: 300rem" />
-      <Chart :option="option3" loading style="height: 300rem" />
+    <AutoScaleScreen :width="width" :height="height" :delay="0">
+      <Chart :option="options" />
+      <Chart :option="option2" />
+      <Chart :option="option3" loading />
     </AutoScaleScreen>
   </div>
 </template>
@@ -13,6 +13,8 @@ import AutoScaleScreen from "@/components/AutoScaleScreen/AutoScaleScreen.vue"
 import Chart from "@/components/Chart/Chart.vue"
 import type { ECOption } from "@/components/Chart/echarts"
 
+const width = ref(0)
+const height = ref(0)
 const options: ECOption = {
   title: {
     text: "Stacked Line",
@@ -133,6 +135,12 @@ const option3: ECOption = {
     },
   ],
 }
+
+onMounted(() => {
+  width.value = 1920 - document.querySelector("#Layout-Menu")!.clientWidth - 40
+  height.value =
+    document.body.clientHeight - document.querySelector("#Layout-Header")!.clientHeight - 29
+})
 </script>
 
 <style lang="scss">
