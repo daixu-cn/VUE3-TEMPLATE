@@ -21,15 +21,17 @@ const props = withDefaults(defineProps<AutoScaleScreenProps>(), {
 const instance = useTemplateRef("AutoScaleScreenRef")
 
 function handleScreenAuto() {
-  const $el = instance.value!
-  const scaleWidth = $el.clientWidth / props.width
-  const scaleHeight = $el.clientHeight / props.height
-  const scale = Math.min(scaleWidth, scaleHeight)
-  $el.style.transform = `scale(${scale})`
+  nextTick(() => {
+    const $el = instance.value!
+    const scaleWidth = $el.clientWidth / props.width
+    const scaleHeight = $el.clientHeight / props.height
+    const scale = Math.min(scaleWidth, scaleHeight)
+    $el.style.transform = `scale(${scale})`
+  })
 }
 
 const resize = debounce({ delay: props.delay }, handleScreenAuto)
-onMounted(handleScreenAuto)
+watch(() => props, handleScreenAuto, { deep: true })
 onMounted(() => addEventListener("resize", resize))
 onUnmounted(() => removeEventListener("resize", resize))
 </script>
