@@ -1,12 +1,12 @@
 import pluginVue from "eslint-plugin-vue"
-import vueTsEslintConfig from "@vue/eslint-config-typescript"
+import { defineConfigWithVueTs, vueTsConfigs } from "@vue/eslint-config-typescript"
 import skipFormatting from "@vue/eslint-config-prettier/skip-formatting"
 
-export default [
+export default defineConfigWithVueTs([
   { name: "app/files-to-lint", files: ["**/*.{ts,mts,tsx,vue}"] },
   { name: "app/files-to-ignore", ignores: ["**/dist/**", "**/dist-ssr/**", "**/coverage/**"] },
-  ...pluginVue.configs["flat/essential"],
-  ...vueTsEslintConfig(),
+  pluginVue.configs["flat/essential"],
+  vueTsConfigs.recommended,
   skipFormatting,
   {
     rules: {
@@ -20,4 +20,4 @@ export default [
       "@typescript-eslint/ban-ts-comment": "off", // 禁用使用 @ts-comment 标记忽略特定的 TypeScript 错误
     },
   },
-]
+])

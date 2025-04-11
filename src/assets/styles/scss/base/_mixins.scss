@@ -26,20 +26,18 @@
   }
 }
 
-//单行超出隐藏
-@mixin text-ellipsis($type: ellipsis) {
-  white-space: nowrap;
+//文本超出隐藏
+@mixin text-ellipsis($rowNum: 1, $type: ellipsis) {
   overflow: hidden;
-  text-overflow: $type;
-}
 
-//多行超出隐藏
-@mixin more-text-ellipsis($rowNum: 1) {
-  // $rowNum设定多少行
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: $rowNum;
-  overflow: hidden;
+  @if $rowNum == 1 {
+    white-space: nowrap;
+    text-overflow: $type;
+  } @else {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $rowNum;
+  }
 }
 
 //行内元素垂直居中
