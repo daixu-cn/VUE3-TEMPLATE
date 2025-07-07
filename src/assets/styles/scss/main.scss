@@ -7,13 +7,15 @@
 @use "@/assets/styles/scss/animation" as *;
 
 html {
-  font-size: calc(100vw / #{strip-units($design-width)});
+  font-size: min(
+    calc(100vw / #{strip-units($design-width)}),
+    calc(100vh / #{strip-units($design-height)})
+  );
   box-sizing: border-box;
   tab-size: 4;
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: $scrollbar-color;
 
